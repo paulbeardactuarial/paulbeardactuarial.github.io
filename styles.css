@@ -1,1 +1,7 @@
 /* css styles */
+
+.llm-prompt-text {
+  color: #008CBA;
+  font-weight: bold;
+  font-style: italic;
+}

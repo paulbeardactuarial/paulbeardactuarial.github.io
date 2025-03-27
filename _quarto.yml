@@ -8,10 +8,12 @@ website:
       - href: index.qmd
         text: Home
       - about.qmd
-
+      - href: artificial_actuary_cod.qmd
+        text: Artificial Actuary
+        
 format:
   html:
-    theme: cosmo
+    theme: yeti
     css: styles.css
     toc: true
 
