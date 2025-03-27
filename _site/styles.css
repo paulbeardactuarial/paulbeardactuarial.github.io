@@ -1,1 +1,16 @@
 /* css styles */
+
+.llm-prompt-text {
+  color: #008CBA;
+  font-weight: bold;
+  font-style: italic;
+}
+
+
+.quarto-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
