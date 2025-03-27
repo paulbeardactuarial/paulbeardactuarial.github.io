@@ -437,7 +437,7 @@ create_comparison_table <- function(data) {
     resizable = TRUE,
     
     # Pagination settings
-    defaultPageSize = 10,
+    defaultPageSize = 5,
     showPageSizeOptions = TRUE,
     pageSizeOptions = c(5, 10, 25, 50, 100),
     paginationType = "numbers",

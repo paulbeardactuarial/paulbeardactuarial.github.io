@@ -8,8 +8,10 @@ website:
       - href: index.qmd
         text: Home
       - about.qmd
-      - href: artificial_actuary_cod.qmd
-        text: Artificial Actuary
+      - text: Artificial Actuary 
+        menu:
+          - href: artificial_actuary_cod.qmd
+            text: Classifying Causes of Death
         
 format:
   html:
