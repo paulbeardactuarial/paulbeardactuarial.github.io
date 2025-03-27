@@ -5,6 +5,7 @@ editor: visual
 execute:
   code-fold: true
 ---
+![](./artificial_actuary_cod/Images/dark background robot house.png){width=100%}
 
 Recently an actuarial colleague came across a problem. They wanted to categorise a dataset containing many irregular and free-text causes of death, into broader categories. This can be a problem for any actuary working in longevity, where we might want to apply stresses for the various drivers of mortality to a select subgroup of the population.
 
@@ -13,7 +14,7 @@ Before the AI overlords take over, and the only cause of mortality is simply "de
 ```{r, define_gt_preferences}
 #| echo: false
 
-main_color <- "#AD78C2" 
+main_color <- "#008CBA"
 
 gt_custom_theme <-
   function(gt) {
@@ -29,7 +30,7 @@ gt_custom_theme <-
         column_labels.background.color = main_color,
         quarto.disable_processing = TRUE
         ) |>
-      opt_vertical_padding(scale = 0.2)
+      opt_vertical_padding(scale = 0.8)
   }
 
 ```
@@ -108,7 +109,6 @@ results_df <-
 ```{r}
 #| label: determine consensus
 #| echo: false
-
 
 results_consensus <-
   results_df |>
@@ -194,40 +194,26 @@ For this experiment I will get different LLMs to classify the ICD-10 causes of d
 ...states that smoking showed an increase in mortality for the following categories of disease:
 
 -   coronary heart disease
-
 -   cerebrovascular disease
-
 -   pulmonary disease
-
 -   lung cancer
-
 -   colorectal cancer
-
 -   larynx cancer
-
 -   kidney cancer
-
 -   acute myeloid leukemia
-
 -   oral cavity cancer
-
 -   esophageal cancer
-
 -   pancreatic cancer
-
 -   bladder cancer
-
 -   stomach cancer
-
 -   prostate cancer
-
 -   sudden death
 
 This paper would be very useful, but my other dataset is the ONS cause of death mortality by ICD-10 code in England and Wales. A snapshot of just some of those causes of death is shown below:
-
 ```{r}
 #| label: example of ICD10 data
 #| echo: false
+#| tbl-cap: "Table 1: Random Sample of Causes of Death"
 
 withr::with_seed(
   1,
@@ -235,7 +221,8 @@ withr::with_seed(
     slice_sample(n = 25) |>
     select(cause_of_death, no_of_deaths_2013_to_2023 = total) |>
     gt() |>
-    gt_custom_theme()
+    gt_custom_theme() |> 
+    opt_vertical_padding(scale = 0.2)
 )
 ```
 
@@ -248,13 +235,9 @@ My initial attempt at this tried to use the {mall} package and an LLM that I dow
 Instead, I have used the brilliant {ellmer} package. This package allows R users to connect to a whole range of APIs available. Spoilt for choice, I set up a few links. The following LLMs were used:
 
 -   Chat GPT 4o (gpt-4o-2024-08-06)
-
 -   Chat GPT 4o Mini (gpt-4o-mini-2024-07-18)
-
 -   Gemini (gemini-2.0-flash-001)
-
 -   Llama (llama-3.3-70b-versatile)
-
 -   Deepseek R1, distilled (deepseek-r1-distill-llama-70b)
 
 Initial attempts revealed some of the problems with using LLMs to clean data.
@@ -263,11 +246,15 @@ The first issue was around token limits and speed. Sending a single cause of dea
 
 The second main issue was getting data back in a regular format. It was almost comical how badly behave some of the LLMs were at being regular. Sometimes the no. of results didn't match the no. of items sent. It was also impossible to get Deepseek to stop explaining itself in the output - no matter what I told it in the prompt! In the end it became apparent the best strategy was to communicate in JSON format and get the key results wrapped up in markers so I can extract it from the text and convert back to a dataframe using jsonlite::fromJSON(). The initial prompt evolved over time. Below is what I sent in relation to structure:
 
-*"You are a classification LLM. You will receive a JSON file. The file will contain a list of items with cause_of_death. It is important that you return only an edited version of the JSON file. Add 'category' to each item, which can only ever pick one of the values below. No explanations. Return only the data in a structured JSON format. Your final JSON code must begin with* \tex\*\`\`\` and end with\* \tex\*\`\`\`"\*
+::: {.llm-prompt-text}
+"You are a classification LLM. You will receive a JSON file. The file will contain a list of items with cause_of_death. It is important that you return only an edited version of the JSON file. Add 'category' to each item, which can only ever pick one of the values below. No explanations. Return only the data in a structured JSON format. Your final JSON code must begin with \tex\`\`\` and end with \tex\`\`\`"
+:::
 
 The final issue was ambiguity. Some of the categories in the smoking paper could be interpreted in different ways. For example "pulmonary disease" technically means any disease of the lungs, yet this could entail something completely disconnected to smoking, such as tuberculosis with HIV or asbestos poisoning. Genetic disorders are also not going to be relevant to our risk driver in this case. In the end, I added further instruction to my LLM prompt:
 
-*"If a cause of death cannot be linked to smoking in any way, for example if it is an infectious disease, a genetic disorder, or has an external cause provided in the cause_of_death text (e.g. asbestos), then assign the category as "none""*
+::: {.llm-prompt-text}
+"If a cause of death cannot be linked to smoking in any way, for example if it is an infectious disease, a genetic disorder, or has an external cause provided in the cause_of_death text (e.g. asbestos), then assign the category as "none""
+:::
 
 This didn't eliminate some ambiguity over some of the groups. In particular, the terms "sudden death" and "coronary heart disease" weren't clear to me what they entailed precisely. Given I was hoping to mark the results, I dropped "sudden death" and changed to "ischaemic heart disease" respectively.
 
@@ -278,10 +265,10 @@ Finally, before I fed the causes of death into the LLM, I shuffled them. My orig
 There were 3,598 causes of death. I processed the category returned by each model, and compared to my own evaluation. A huge caveat here is that I am not a medical doctor, and have done the best with my very limited faculties. In general I have used the broader categorisation of ICD-10 codes that already exists.
 
 The accuracy of every model was at least 93%. However because 3,353 of the causes of death fed in should not have been assigned a category, a score of 93% would also be attained by simply stating "none" for everything.
-
 ```{r}
 #| label: table of accuracy and attempts
 #| echo: false
+#| tbl-cap: "Table 2: Accuracy and Completion Rates of LLMs"
 
 results_df |>
   summarise(
@@ -310,11 +297,11 @@ results_df |>
 ```
 
 To get a better understanding of the model success, we look at the stats of precision, recall and f1. A higher precision score means the model was often right when assigning a category (other than "none"). A higher recall score means the model did not often assign a category incorrectly (other than "none"). The F1 score combines these two to give an overall performance rating.
-
 ```{r}
 #| label: table of recall, precision and f1
 #| echo: false
 #| self_contained: false
+#| tbl-cap: "Table 3: Performance Evaluation of LLMs"
 
 results_stats <-
 results_df |>
@@ -376,10 +363,10 @@ The F1 scores attained were good, but not incredible. We are certainly not ready
 "unanimous_consensus" picks the category that all 5 models agreed on, if they did not all agree it refrains from answering
 
 The results are impressive, with "consensus" having strong scores, and "unanimous_consensus" having fantastic results. In all unanimous cases of differences, it was for the most ambiguous of categories, and I was no more sure of my own answer than the models. I could certainly have been persuaded that "unanimous_consensus" was the correct answer each time.
-
 ```{r}
 #| label: table of recall, precision and f1 for consensus
 #| echo: false
+#| tbl-cap: "Table 4: Performance Evaluation of Meta LLMs"
 
 results_stats |> 
   filter(model |> str_detect("consensus")) |> 
@@ -414,10 +401,12 @@ Using one LLM is helpful. Using many is very helpful. We are not at a point wher
 
 This demonstration not only highlights the usefulness of AI, but the enhanced possibilities when working with the more modern actuarial coding languages like R and Python.
 
+If you are interested in the complete results, they are collected in the interactive table below:
 ```{r}
-#| label: just messing around looking at results 
+#| label: reactable comparison table for final results 
 #| echo: false
 #| include: true
+#| tbl-cap: "Table 5: Complete Categorisation Results Data"
 
 cat_and_death_df <-
 results_df |> 
@@ -428,7 +417,7 @@ results_df |>
       summarise(total_deaths = sum(total_deaths), .by = cause_of_death), 
     by = "cause_of_death") |> 
   arrange(desc(total_deaths)) |> 
-  mutate(correct_consensus = category_human == category_consensus
+  mutate(correct_consensus = category_human == category_consensus, .before = consensus_no
   ) |> 
   select(
     -dplyr::any_of(
@@ -439,108 +428,7 @@ results_df |>
     )
   )
 
-
-# Assuming your dataframe is called 'df'
-create_mortality_table <- function(data) {
-  reactable(
-    data,
-    filterable = TRUE,  # Enable column-level filtering
-    searchable = TRUE,  # Enable global search
-    sortable = TRUE,    # Enable sorting for all columns
-    resizable = TRUE,   # Allow column resizing
-    
-    # Pagination settings
-    defaultPageSize = 5,
-    paginationType = "numbers",
-    
-    # Column definitions for custom formatting and behavior
-    columns = list(
-      cause_of_death = colDef(
-        name = "Cause of Death",
-        filterable = TRUE,
-        width = 250
-      ),
-      category_gpt_4o_mini = colDef(
-        name = "GPT-4o Mini Category",
-        filterable = TRUE
-      ),
-      category_gpt_4o = colDef(
-        name = "GPT-4o Category",
-        filterable = TRUE
-      ),
-      category_llama_33 = colDef(
-        name = "Llama 3.3 Category",
-        filterable = TRUE
-      ),
-      category_deepseek_r1 = colDef(
-        name = "DeepSeek R1 Category",
-        filterable = TRUE
-      ),
-      category_gemini = colDef(
-        name = "Gemini Category",
-        filterable = TRUE
-      ),
-      category_consensus = colDef(
-        name = "Consensus Category",
-        filterable = TRUE
-      ),
-      category_human = colDef(
-        name = "Human Category",
-        filterable = TRUE
-      ),
-      consensus_no = colDef(
-        name = "LLM Consensus Votes",
-        aggregate = "mean",
-        format = colFormat(digits = 1)
-      ),
-      total_deaths = colDef(
-        name = "Total Deaths",
-        aggregate = "sum"
-      ),
-correct_consensus = colDef(
-        name = "Consensus Correctness",
-        cell = function(value) {
-          if (is.na(value)) {
-            ""  
-          } else if (value == TRUE) {
-            "✓"  
-          } else {
-            "✗" 
-          }
-        },
-        align = "center",
-        style = list(
-          fontWeight = "bold",
-          color = function(value) {
-            if (value == TRUE) "green" else "red"
-          }
-        )
-      )
-    ),
-    
-    # Grouping and aggregation options
-    groupBy = NULL,
-    
-    # Styling
-    theme = reactableTheme(
-      borderColor = "#dfe2e5",
-      stripedColor = "#f6f8fa",
-      highlightColor = "#f0f5f9",
-      cellPadding = "8px 12px"
-    ),
-    
-    # Top-level filter for correct_consensus
-    elementId = "mortality-table"
-  )
-}
-
-
-
-
-
-
-
-create_mortality_table <- function(data) {
+create_comparison_table <- function(data) {
   reactable(
     data,
     filterable = TRUE,
@@ -549,7 +437,7 @@ create_mortality_table <- function(data) {
     resizable = TRUE,
     
     # Pagination settings
-    defaultPageSize = 5,
+    defaultPageSize = 10,
     showPageSizeOptions = TRUE,
     pageSizeOptions = c(5, 10, 25, 50, 100),
     paginationType = "numbers",
@@ -640,7 +528,7 @@ create_mortality_table <- function(data) {
           )
         }
       ),
-            consensus_no = colDef(
+      consensus_no = colDef(
         name = "LLM Consensus Votes",
         aggregate = "mean",
         format = colFormat(digits = 0, separators = TRUE)
@@ -666,7 +554,7 @@ create_mortality_table <- function(data) {
         color = "white"
       ),
       style = list(
-        fontFamily = "Arial, sans-serif",
+        fontFamily = "Open Sans, Segoe UI, sans-serif",
         fontSize = "14px"  
       )
     ),
@@ -676,7 +564,7 @@ create_mortality_table <- function(data) {
   )
 }
 
-# Usage
-create_mortality_table(cat_and_death_df)
+create_comparison_table(cat_and_death_df)
 
 ```
+
