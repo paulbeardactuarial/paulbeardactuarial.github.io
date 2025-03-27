@@ -1,15 +1,34 @@
 ---
-title: "paulbeardactuarial.github.io"
+format: 
+  html:
+    fig-pos: "H"
+fig-width: 8.5
+fig-asp: 0.618
+out-width: "70%" 
+fig-align: center
+tbl-cap-location: top
+fig-cap-location: top
+execute:
+  echo: false
+toc: true
 ---
 
-This is a Quarto website.
-
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
-
 ```{r}
-1 + 1
+#| label: setup
+#| include: false
+
+library(lubridate)
+
 ```
 
-This is a test where I add more text
+# About
 
-This is another test where I add even more text
+<div style="float: right; margin-left: 15px; width: 30%;">
+![](./index/Images/1742224566404.jpg)
+</div>
+
+My name is Paul Beard. I am a technical orientated Fellow of the Institute of Actuaries working in the life insurance industry for over `r floor(interval(ISOdate(2012,9,1), now()) / years(1))` years, with over `r {floor(interval(ISOdate(2017,12,1), now()) / years(1))}` of those years being post qualification. 
+
+I am also experienced as an R developer and have built complex models, complete packages and everything on this website. 
+
+When you combine these two things 
