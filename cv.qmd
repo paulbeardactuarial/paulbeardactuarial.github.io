@@ -34,91 +34,6 @@ execute:
 toc: true
 ---
 
-:::: {#tag-filter-container}
-<strong>Filter Content Tags:</strong>
-
-::: {#tag-filter}
-:::
-::::
-
-```{=html}
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  console.log('Script started'); // Debugging log
-
-  // Collect all sections with tags
-  const contentSections = document.querySelectorAll('[data-tags]');
-  console.log(`Found ${contentSections.length} tagged sections`); // Debugging log
-
-  // Collect unique tags
-  const allTags = new Set();
-  contentSections.forEach(section => {
-    const tags = section.getAttribute('data-tags').split(',');
-    tags.forEach(tag => {
-      const trimmedTag = tag.trim();
-      if (trimmedTag) allTags.add(trimmedTag);
-    });
-  });
-
-  // Get filter container
-  const filterContainer = document.getElementById('tag-filter');
-  console.log(`Tags found: ${Array.from(allTags)}`); // Debugging log
-
-  // Create checkboxes for each tag
-  Array.from(allTags).forEach(tag => {
-    // Create checkbox
-    const checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    checkbox.id = `tag-${tag}`;
-    checkbox.name = `tag-${tag}`;
-    checkbox.value = tag;
-    checkbox.checked = true;
-
-    // Create label
-    const label = document.createElement('label');
-    label.htmlFor = `tag-${tag}`;
-    label.style.marginRight = '10px';
-    
-    // Add checkbox and text to label
-    label.appendChild(checkbox);
-    label.appendChild(document.createTextNode(tag));
-
-    // Add to filter container
-    filterContainer.appendChild(label);
-  });
-
-  // Visibility update function
-  function updateContentVisibility() {
-    const activeFilters = Array.from(document.querySelectorAll('#tag-filter input:checked'))
-      .map(cb => cb.value);
-
-    console.log(`Active filters: ${activeFilters}`); // Debugging log
-
-    contentSections.forEach(section => {
-      const sectionTags = section.getAttribute('data-tags')
-        .split(',')
-        .map(tag => tag.trim())
-        .filter(tag => tag !== '');
-
-      // Show section if any of its tags are in active filters
-      const shouldShow = sectionTags.some(tag => activeFilters.includes(tag));
-      section.style.display = shouldShow ? '' : 'none';
-      
-      console.log(`Section tags: ${sectionTags}, Should show: ${shouldShow}`); // Debugging log
-    });
-  }
-
-  // Add change event to all checkboxes
-  document.querySelectorAll('#tag-filter input').forEach(checkbox => {
-    checkbox.addEventListener('change', updateContentVisibility);
-  });
-
-  // Initial visibility update
-  updateContentVisibility();
-});
-</script>
-```
-
 ```{r}
 #| label: setup
 #| include: false
@@ -362,15 +277,120 @@ performance_rating_plot %>% ggplotly()
 
 # **Work Experience**
 
+:::: {#tag-filter-container}
+<strong>What Experience Are You Interested In?</strong>
+
+::: {#tag-filter}
+:::
+::::
+
+```{=html}
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('Script started'); // Debugging log
+  // Collect all sections with tags
+  const contentSections = document.querySelectorAll('[data-tags]');
+  console.log(`Found ${contentSections.length} tagged sections`); // Debugging log
+  // Collect unique tags
+  const allTags = new Set();
+  contentSections.forEach(section => {
+    const tags = section.getAttribute('data-tags').split(',');
+    tags.forEach(tag => {
+      const trimmedTag = tag.trim();
+      if (trimmedTag) allTags.add(trimmedTag);
+    });
+  });
+  // Get filter container
+  const filterContainer = document.getElementById('tag-filter');
+  console.log(`Tags found: ${Array.from(allTags)}`); // Debugging log
+  
+  // Create a style element for custom checkbox styling
+  const styleElement = document.createElement('style');
+  styleElement.textContent = `
+    #tag-filter {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    #tag-filter input[type="checkbox"] {
+      accent-color: #008CBA;
+      margin-right: 10px;
+    }
+    #tag-filter label {
+      display: flex;
+      align-items: center;
+      margin-bottom: 5px;
+    }
+  `;
+  document.head.appendChild(styleElement);
+
+  // Create checkboxes for each tag
+  Array.from(allTags).forEach(tag => {
+    // Create checkbox
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.id = `tag-${tag}`;
+    checkbox.name = `tag-${tag}`;
+    checkbox.value = tag;
+    checkbox.checked = true;
+    
+    // Create label
+    const label = document.createElement('label');
+    label.htmlFor = `tag-${tag}`;
+    
+    // Add checkbox and text to label
+    label.appendChild(checkbox);
+    label.appendChild(document.createTextNode(tag));
+    
+    // Add to filter container
+    filterContainer.appendChild(label);
+  });
+  
+  // Visibility update function
+  function updateContentVisibility() {
+    const activeFilters = Array.from(document.querySelectorAll('#tag-filter input:checked'))
+      .map(cb => cb.value);
+    console.log(`Active filters: ${activeFilters}`); // Debugging log
+    
+    contentSections.forEach(section => {
+      const sectionTags = section.getAttribute('data-tags')
+        .split(',')
+        .map(tag => tag.trim())
+        .filter(tag => tag !== '');
+      
+      // Show section if any of its tags are in active filters
+      const shouldShow = sectionTags.some(tag => activeFilters.includes(tag));
+      section.style.display = shouldShow ? '' : 'none';
+      
+      console.log(`Section tags: ${sectionTags}, Should show: ${shouldShow}`); // Debugging log
+    });
+  }
+  
+  // Add change event to all checkboxes
+  document.querySelectorAll('#tag-filter input').forEach(checkbox => {
+    checkbox.addEventListener('change', updateContentVisibility);
+  });
+  
+  // Initial visibility update
+  updateContentVisibility();
+});
+</script>
+
+```
+
+
 ### SCOR [(Employed as Contractor, Feb 2024 — Feb 2025)]{style="font-style: italic; font-size: 0.6em;"}
 
 **In my time at SCOR I was the lead R developer in a project to migrate the entire pricing model suite from Excel / SAS / Word into to a single R workflow.**
 
 #### R Developer for Longevity Pricing [(Feb 2024 — Feb 2025)]{style="font-style: italic; font-size: 0.8em;"}
 
-::: {.content-section data-tags="longevity,R"}
+::: {.content-section data-tags="Longevity,R"}
 -   The initial project was completed for UK reinsurance pricing of BPA schemes. The project migrated the convoluted pricing process into a slick single R workflow. We revolutionised the pricing process at SCOR. I was the lead developer of an R package and Quarto book that together could perform all pricing calculations required, and produce html reports.
+:::
 
+::: {.content-section data-tags="Longevity,R"}
 -   The migration included building many complex pricing models in R:
     -   Pension Value Escalation model
     -   Proportion Married & Proportion Transferred Out derivation models
@@ -403,7 +423,7 @@ performance_rating_plot %>% ggplotly()
 
 -   Phoenix uses MG-Alfa as their main valuation platform. The tables fed into MG-Alfa were created through a set of complex Excel spreadsheets. In this role I developed and maintained these spreadsheets in co-ordination with the release cycle. 
 
-::: {.content-section data-tags="longevity"}
+::: {.content-section data-tags="Longevity"}
 -   Phoenix was rapidly expanding their BPA exposure, and had a large amount of assumptions that needed adding to their MG-Alfa capital model. I constructed the processes for this to significantly streamline the process. 
 ::: 
 ::: {.content-section data-tags="R"}
@@ -416,19 +436,19 @@ performance_rating_plot %>% ggplotly()
 
 #### Credit Quality Assessor of Commercial Real Estate Loans (CRELs) [(Aug 2021 — Apr 2023)]{style="font-style: italic; font-size: 0.8em;"}
 
-::: {.content-section data-tags="commercial real estates loans"}
+::: {.content-section data-tags="Commercial Real Estate Loans"}
 -   Royal London looked to expand the illiquid asset classes it invests in as part of its Matching Adjustment portfolio. This entailed the inclusion of CRELs. In this role I developed an internal credit quality assessment process (ICQA) for CRELs. As this asset class was new to the company, it required a lot of development from ground level.
 :::
 
-::: {.content-section data-tags="commercial real estates loans, R"}
+::: {.content-section data-tags="Commercial Real Estate Loans, R"}
 -   As part of the role I created a complex stochastic model in R which captures the intricate cash flow structure of CRELs. The model simulates defaults across multiple correlated tenants over many time periods, and evaluates the outcomes of the loans to assess the credit quality. 
 :::
 
-::: {.content-section data-tags="internal model, commercial real estates loans"}
+::: {.content-section data-tags="Internal Model, Commercial Real Estate Loans"}
 -   After developing the ICQA process for CRELs, I then developed the internal model risk calibration for CREL risk.
 :::
 
-::: {.content-section data-tags="mentor"}
+::: {.content-section data-tags="Mentor"}
 #### Actuarial Student Overseer [(Jun 2018 — Nov 2021)]{style="font-style: italic; font-size: 0.8em;"}
 
 -   Volunteered as coordinator and adviser to over 60 students sitting exams at Royal London. This role has required strong communication and leadership skills. I made sure to always be approachable to the students, and keep open paths of dialogue. This position was also a volunteer position with the IFoA.
@@ -436,11 +456,11 @@ performance_rating_plot %>% ggplotly()
 
 #### Internal Model Calibrator [(Mar 2018 — Aug 2021)]{style="font-style: italic; font-size: 0.8em;"}
 
-::: {.content-section data-tags="internal model, longevity"}
+::: {.content-section data-tags="Internal Model, Longevity"}
 -   I worked on the development of the company’s Internal Model Application Process (IMAP) and produced complete insurance risk calibrations for Longevity Trend, Longevity Level, Mortality, Morbidity and Mortality Catastrophe risks.
 :::
 
-::: {.content-section data-tags="internal model"}
+::: {.content-section data-tags="Internal Model"}
 -   I also produced IMAP calibrations for Persistency, Commodity and Property risk. I also completed calibration of Market-to-market Dependencies looking at correlations between major risk groups.
 
 -   Answered questions from both internal validators and the PRA about our IMAP methodology in a short period of time. Resolved validation findings in a timely manner.
@@ -450,15 +470,15 @@ performance_rating_plot %>% ggplotly()
 
 #### With Profits Management Actuary [(Sep 2012 — Mar 2018)]{style="font-style: italic; font-size: 0.8em;"}
 
-::: {.content-section data-tags="with profits management"}
+::: {.content-section data-tags="With Profits Management"}
 -   Within this role I carried out regular analysis on bonus supportability for With Profits business. Royal London has a large portfolio of with profits business, often gained through acquisitions. Different business lines often has different methods/rules attached, giving me a broad and deep persepective on how with profits business can work.
 :::
 
-::: {.content-section data-tags="with profits management, mentor"}
+::: {.content-section data-tags="With Profits Management, Mentor"}
 -   After many years working in with profits I became a subject matter expert, culminating in me leading a team of five junior actuarial staff to complete the year end final bonus reports.
 :::
 
-::: {.content-section data-tags="with profits management"}
+::: {.content-section data-tags="With Profits Management"}
 -   I was involved in many with profits management tasks including (but not limited to) bonus setting, projections, run-off planning and estate distribution.
 
 -   I have been involved in many bespoke projects, the most material being:
@@ -470,7 +490,7 @@ performance_rating_plot %>% ggplotly()
     -   Policyholder remediation calculations
 :::
 
-::: {.content-section data-tags="with profits management, longevity"}
+::: {.content-section data-tags="With Profits Management, Longevity"}
 -   I was a major contributor to Royal London's Guaranteed Annuity Option (GAO) compromise scheme. In this scheme, Royal London bought GAOs from policyholders in return for a material uplift to their asset share. My role was calculating a fair price for Royal London to offer the policyholders, and this offer was submitted to and approved by the court for regulatory go-ahead.
 :::
 
