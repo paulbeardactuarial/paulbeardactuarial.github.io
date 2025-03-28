@@ -25,7 +25,7 @@ format:
           </style>
 fig-width: 8.5
 fig-asp: 0.618
-out-width: "70%" 
+out-width: "85%" 
 fig-align: center
 tbl-cap-location: top
 fig-cap-location: top
@@ -58,32 +58,13 @@ read_all_excel_sheets <- function(filename, tibble = FALSE) {
 cvdata <- read_all_excel_sheets(data_filepath)
 
 ```
-
 # **Summary**
 
--   I am a technical orientated Fellow of the Institute of Actuaries working in the life insurance industry for `r {floor(interval(ISOdate(2012,9,3), now()) / years(1))}` years, with `r {floor(interval(ISOdate(2017,12,1), now()) / years(1))}` years post qualification.
+-   I am a technically strong Fellow of the Institute of Actuaries working in the life insurance industry for `r {floor(interval(ISOdate(2012,9,3), now()) / years(1))}` years, with `r {floor(interval(ISOdate(2017,12,1), now()) / years(1))}` years post qualification.
 
 -   I am also experienced as an R developer and have built complex models, complete packages and everything on this website.
 
-<!-- -->
-
--   I have a diverse range of actuarial work experience with my main areas of specialty being:
-
-    -   Longevity
-
-    -   Internal Model Risk Calibration
-
-    -   Commercial Real Estate Loans
-
-    -   With Profits Management
-
-<!-- -->
-
--   I am technically strong and have a breadth of experience developing complex models. I am proficient across a variety of platforms (see @fig-software-experience).
-
-<!-- -->
-
--   I have a fantastic track record of performance, both academically and in a work environment (see @fig-RL-Performance).
+-   I have a fantastic track record of performance, both academically and in a work environment.
 
 # **Qualifications**
 
@@ -287,7 +268,7 @@ document.addEventListener('DOMContentLoaded', function() {
       checkbox.id = `tag-${tag}`;
       checkbox.name = `tag-${tag}`;
       checkbox.value = tag;
-      checkbox.checked = true;
+      checkbox.checked = false;
       
       // Create label
       const label = document.createElement('label');
@@ -308,6 +289,15 @@ document.addEventListener('DOMContentLoaded', function() {
       .map(cb => cb.value);
     console.log(`Active filters: ${activeFilters}`); // Debugging log
     
+    // If no filters are selected, hide everything
+    if (activeFilters.length === 0) {
+      contentSections.forEach(section => {
+        section.style.display = 'none';
+      });
+      return;
+    }
+    
+    // Otherwise, show/hide based on selected tags
     contentSections.forEach(section => {
       const sectionTags = section.getAttribute('data-tags')
         .split(',')
@@ -331,17 +321,22 @@ document.addEventListener('DOMContentLoaded', function() {
   updateContentVisibility();
 });
 </script>
+
 ```
 
 ### SCOR [(Employed as Contractor, Feb 2024 — Feb 2025)]{style="font-style: italic; font-size: 0.65em;"}
 
-**In my time at SCOR I was the lead R developer in a project to migrate the entire pricing model suite from Excel / SAS / Word into to a single R workflow.**
+#### Overview
 
-**SCOR were impressed with my work and offered an extension after 6 months.**
+-   In my time at SCOR I was the lead R developer in a project to migrate the entire pricing model suite from Excel / SAS / Word into to a single R workflow.
 
-**When the project was completed after 12 months, management stated that it was the first ever IT-based project they had known at SCOR to finish on-time and on-budget.**
+-   SCOR were impressed with my work and offered an extension after 6 months.
 
+-   When the project was completed after 12 months, management stated that it was the first ever IT-based project they had known at SCOR to finish on-time and on-budget.
+
+::: {.content-section data-tags="Longevity, R"}
 #### R Developer for Longevity Pricing [(Feb 2024 — Feb 2025)]{style="font-style: italic; font-size: 0.65em;"}
+:::
 
 ::: {.content-section data-tags="Longevity,R"}
 -   The initial project was completed for UK reinsurance pricing of BPA schemes. The project migrated the convoluted pricing process into a slick single R workflow. We revolutionised the pricing process at SCOR. I was the lead developer of an R package and Quarto book that together could perform all pricing calculations required, and produce html reports.
@@ -368,13 +363,17 @@ document.addEventListener('DOMContentLoaded', function() {
     -   Extensive reconciliation and testing
 :::
 
-### **Phoenix Group** [(Employed as Contractor, Apr 20243— Feb 2024)]{style="font-style: italic; font-size: 0.65em;"}
+### **Phoenix Group** [(Employed as Contractor, Apr 2023— Feb 2024)]{style="font-style: italic; font-size: 0.65em;"}
 
-**In my time at Phoenix I contributed to the assumptions structuring of the MG-Alfa capital model whilst working under the tight quarterly release cycle. I worked with incredibly complex spreadsheets that existed there, and often came up with innovative solutions to improve the neglected systems that were in place.**
+#### Overview
 
-**Phoenix were impressed with my work and offered an extension after 6 months.**
+-   In my time at Phoenix I contributed to the assumptions structuring of the MG-Alfa capital model whilst working under the tight quarterly release cycle. I worked with incredibly complex spreadsheets that existed there, and often came up with innovative solutions to improve the neglected systems that were in place.
 
+-   Phoenix were impressed with my work and offered an extension after 6 months.
+
+::: {.content-section data-tags="Longevity, R"}
 #### Assumptions Architect for BPAs [(April 2023 — Feb 2024)]{style="font-style: italic; font-size: 0.65em;"}
+:::
 
 ::: {.content-section data-tags="Longevity"}
 -   Phoenix was rapidly expanding their BPA exposure, and had a large amount of assumptions that needed adding to their MG-Alfa capital model. I constructed the processes for this to significantly streamline the process. This included automation with VBA.
@@ -386,13 +385,17 @@ document.addEventListener('DOMContentLoaded', function() {
 -   By being able to replicate the tenets of how MG-Alfa reads table structures within R, the tool could produce an intelligent breakdown of assumption table changes which was superior to alternatives being used at the time (e.g. VBA cell-by-cell comparison, BeyondCompare). The tool was packaged and rolled out to other actuaries.
 :::
 
-### **Royal London** [(Employed as Full-time employee, Sep 2012— Apr 2023)]{style="font-style: italic; font-size: 0.65em;"}
+### **Royal London** [(Employed as Permanent, Sep 2012— Apr 2023)]{style="font-style: italic; font-size: 0.65em;"}
 
-**I worked at Royal London for over 10 years, gaining my fellowship as well as a vast array of experience across many actuarial sectors.**
+#### Overview
 
-**During that time I built up a strong reputation as someone who was technically astute and dependable. During appraisals I was consistently rated in the higher categories.**
+-   I worked at Royal London for over 10 years, gaining my fellowship as well as a vast array of experience across many actuarial sectors.
 
+-   During that time I built up a strong reputation as someone who was technically astute and dependable. During appraisals I was consistently rated in the higher categories.
+
+::: {.content-section data-tags="Commercial Real Estate Loans, R, Internal Model"}
 #### Credit Quality Assessor of Commercial Real Estate Loans (CRELs) [(Aug 2021 — Apr 2023)]{style="font-style: italic; font-size: 0.65em;"}
+::: 
 
 ::: {.content-section data-tags="Commercial Real Estate Loans"}
 -   Royal London looked to expand the illiquid asset classes it invests in as part of its Matching Adjustment portfolio. This entailed the inclusion of CRELs. In this role I developed an internal credit quality assessment process (ICQA) for CRELs. As this asset class was new to the company, it required a lot of development from ground level.
@@ -409,10 +412,12 @@ document.addEventListener('DOMContentLoaded', function() {
 ::: {.content-section data-tags="Mentor"}
 #### Actuarial Student Overseer [(Jun 2018 — Nov 2021)]{style="font-style: italic; font-size: 0.65em;"}
 
--   Volunteered as coordinator and adviser to over 60 students sitting exams at Royal London. This role has required strong communication and leadership skills. I made sure to always be approachable to the students, and keep open paths of dialogue. This position was also a volunteer position with the IFoA.
+-   Volunteered as coordinator and adviser to over 60 students sitting exams at Royal London. This role has required strong communication and leadership skills. I made sure to always be approachable to the students, and keep open paths of dialogue. This role was also a volunteer position (Student Employer Contact) with the IFoA.
 :::
 
+::: {.content-section data-tags="Longevity, Internal Model"}
 #### Internal Model Calibrator [(Mar 2018 — Aug 2021)]{style="font-style: italic; font-size: 0.65em;"}
+:::
 
 ::: {.content-section data-tags="Internal Model, Longevity"}
 -   I worked on the development of the company’s Internal Model Application Process (IMAP) and produced complete insurance risk calibrations for Longevity Trend, Longevity Level, Mortality, Morbidity and Mortality Catastrophe risks.
@@ -426,7 +431,9 @@ document.addEventListener('DOMContentLoaded', function() {
 -   I have led many workshops to co-ordinate the opinions of experts in their respective fields, and form consensus on the assumptions and methodology used in the internal model calibrations.
 :::
 
+::: {.content-section data-tags="Longevity, With Profits Management, Mentor"}
 #### With Profits Management Actuary [(Sep 2012 — Mar 2018)]{style="font-style: italic; font-size: 0.65em;"}
+:::
 
 ::: {.content-section data-tags="With Profits Management"}
 -   Within this role I carried out regular analysis on bonus supportability for With Profits business. Royal London has a large portfolio of with profits business, often gained through acquisitions. Different business lines often has different methods/rules attached, giving me a broad and deep persepective on how with profits business can work.
@@ -452,18 +459,3 @@ document.addEventListener('DOMContentLoaded', function() {
 -   I was a major contributor to Royal London's Guaranteed Annuity Option (GAO) compromise scheme. In this scheme, Royal London bought GAOs from policyholders in return for a material uplift to their asset share. My role was calculating a fair price for Royal London to offer the policyholders, and this offer was submitted to and approved by the court for regulatory go-ahead.
 :::
 
-# **Other Projects**
-
-I write and publish articles applying actuarial tools to publicly available data. These include:
-
--   [A case study using A.I. to cleanse actuarial data](artificial_actuary_cod.qmd)
-
--   A mortality investigation of Coronation Street
-
--   An analysis of trends in IFoA exam pass rates
-
-The articles can be found below, along with the R code used to produce the analyses. Alternatively, some can be found on this website.
-
-Articles: <https://www.linkedin.com/in/paul-beard-78a420172/recent-activity/posts/> 
-
-Code: <https://github.com/paulbeardactuarial> 
