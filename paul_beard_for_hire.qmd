@@ -204,7 +204,7 @@ software_experience_plot %>% ggplotly(tooltip = c("y", "fill", "label"))
 # **Work Experience**
 
 :::: {#tag-filter-container}
-<strong>Choose Your Adventure. What Work Experience Are You Interested In?</strong>
+<strong>Choose Your Own Adventure. What Work Experience Are You Interested In?</strong>
 
 ::: {#tag-filter}
 :::

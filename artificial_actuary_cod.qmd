@@ -398,7 +398,7 @@ Although the pickiness of "unanimous_consensus" helped boost its scores, it came
 
 The "consensus" meta-model actually returned an answer for every cause of death. There was never a split decision between the LLMs. This strategy would be a good way to go if we were adamant we didn't want to review any of the data ourselves!
 
-### Conclusion
+## Conclusion
 
 Although many actuaries now ask questions of AI to help with their day-to-day work, using R it is possible to go further and integrate the AI into actuarial data processing and even models. I have provided just one use case here, but there are many more out there for the typical actuary.
 
