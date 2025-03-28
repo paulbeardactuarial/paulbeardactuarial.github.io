@@ -573,3 +573,13 @@ create_comparison_table <- function(data) {
 create_comparison_table(cat_and_death_df)
 
 ```
+
+
+<br>
+<br>
+
+::: {.sign-off}
+
+This article was written by Paul Beard and first published on February 13, 2025
+
+:::
