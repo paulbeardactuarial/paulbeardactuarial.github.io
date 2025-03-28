@@ -32,7 +32,6 @@ fig-cap-location: top
 execute:
   echo: false
 toc: true
-draft: true
 ---
 
 ```{r}
