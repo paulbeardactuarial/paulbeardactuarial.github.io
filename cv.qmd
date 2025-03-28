@@ -58,6 +58,9 @@ read_all_excel_sheets <- function(filename, tibble = FALSE) {
 cvdata <- read_all_excel_sheets(data_filepath)
 
 ```
+
+<div class="major-section-break"></div>
+
 # **Summary**
 
 -   I am a technically strong Fellow of the Institute of Actuaries working in the life insurance industry for `r {floor(interval(ISOdate(2012,9,3), now()) / years(1))}` years, with `r {floor(interval(ISOdate(2017,12,1), now()) / years(1))}` years post qualification.
@@ -65,6 +68,8 @@ cvdata <- read_all_excel_sheets(data_filepath)
 -   I am also experienced as an R developer and have built complex models, complete packages and everything on this website.
 
 -   I have a fantastic track record of performance, both academically and in a work environment.
+
+<div class="major-section-break"></div>
 
 # **Qualifications**
 
@@ -76,8 +81,8 @@ qual.hist <-
   tribble(
     ~Qualification,  ~`Awarded By`, ~Grade,  ~`Subject(s)`,      ~Date,
     "Fellowship",    "IFoA", NA,    "SA2, ST2, ST6",    "2017-12-01",
+        "Masters", "Univ. of Cambridge", "2.i", "Natural Sciences (Chemistry)", "2011-07-01",
     "Bachelors","Univ. of Cambridge", "1", "Natural Sciences (Chemistry)", "2011-07-01",
-    "Masters", "Univ. of Cambridge", "2.i", "Natural Sciences (Chemistry)", "2011-07-01",
     "A Level",       NA, "A (x5)", "Maths, Further Maths, ...", "2007-08-01",
     "GCSE",          NA, "A* (x8); A (x3)", "Maths, English, ...", "2005-08-01"
   ) %>% 
@@ -103,6 +108,8 @@ Other achievements include:
 -   One of top 5 scores in the UK for GCSE Maths (awarded by AQA in Aug 2005)
 
 -   IFoA Certificate in Data Science (awarded by IFoA in Dec 2020)
+
+<div class="major-section-break"></div>
 
 # **Software Experience**
 
@@ -195,6 +202,8 @@ software_experience_plot %>% ggplotly(tooltip = c("y", "fill", "label"))
 
 
 ```
+
+<div class="major-section-break"></div>
 
 # **Work Experience**
 
@@ -324,6 +333,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 ```
 
+---
+
 ### SCOR [(Employed as Contractor, Feb 2024 — Feb 2025)]{style="font-style: italic; font-size: 0.65em;"}
 
 #### Overview
@@ -363,6 +374,8 @@ document.addEventListener('DOMContentLoaded', function() {
     -   Extensive reconciliation and testing
 :::
 
+---
+
 ### **Phoenix Group** [(Employed as Contractor, Apr 2023— Feb 2024)]{style="font-style: italic; font-size: 0.65em;"}
 
 #### Overview
@@ -384,6 +397,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 -   By being able to replicate the tenets of how MG-Alfa reads table structures within R, the tool could produce an intelligent breakdown of assumption table changes which was superior to alternatives being used at the time (e.g. VBA cell-by-cell comparison, BeyondCompare). The tool was packaged and rolled out to other actuaries.
 :::
+
+---
 
 ### **Royal London** [(Employed as Permanent, Sep 2012— Apr 2023)]{style="font-style: italic; font-size: 0.65em;"}
 
