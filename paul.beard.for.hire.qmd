@@ -43,7 +43,7 @@ library(gt)
 library(lubridate)
 library(plotly)
 
-data_loc <- "./cv/Data"
+data_loc <- "./paul.beard.for.hire/Data"
 data_filename <- "Work History Summary.xlsx"
 
 # Read in data
@@ -58,10 +58,6 @@ read_all_excel_sheets <- function(filename, tibble = FALSE) {
 cvdata <- read_all_excel_sheets(data_filepath)
 
 ```
-
-<div class="major-section-break"></div>
-
-# **Summary**
 
 -   I am a technically strong Fellow of the Institute of Actuaries working in the life insurance industry for `r {floor(interval(ISOdate(2012,9,3), now()) / years(1))}` years, with `r {floor(interval(ISOdate(2017,12,1), now()) / years(1))}` years post qualification.
 
