@@ -215,66 +215,6 @@ software_experience_plot %>% ggplotly(tooltip = c("y", "fill", "label"))
 
 ```
 
-# **Performance**
-
-Whilst employed by Royal London during years 2013 - 2020 I was assigned a performance rating each year, as were all staff. Employees were placed in one of four bands which represent different percentile ranges of performance relative to colleagues. Those bands, and the amount of times I was placed in each band over the 8 year period, are: Improvement Required (0); Good (3); Strong (4) and Exceptional (1). 
-
-Below I have mapped my historical ratings to a probability density of performance across all percentiles. The density is calculated by the relative frequency of each rating awarded to me, divided over the percentiles of employee performance that rating represents. I have also included the probability density you would expect from an actuary selected randomly from Royal London, for comparison purposes.
-
-```{r}
-#| label: fig-RL-Performance
-#| fig-cap: "Performance rating density whilst at Royal London"
-
-
-actuary.levels <- c("Random Actuary", "Paul Beard")
-grade.levels <- cvdata$`RL Performance`$grade
-
-data <- cvdata$`RL Performance` %>%
-  mutate("Paul Beard" = count / (maxpercentile - minpercentile) / sum(count),
-         "Random Actuary" = 1) %>%
-  pivot_longer(cols = c("Paul Beard", "Random Actuary"), names_to = "actuary", values_to = "density") %>%
-  select(grade, minpercentile, maxpercentile, density, actuary, count) %>% 
-  mutate(count = if_else(actuary == "Random Actuary", NA, count))
-
-data$grade <- factor(data$grade, levels = grade.levels)
-data$actuary <- factor(data$actuary, levels = actuary.levels)
-performance_rating_plot <-
-  ggplot(data, aes(
-    ymin = 0,
-    fill = grade,
-    label = count
-  )) +
-  geom_rect(
-    aes(
-      xmin = minpercentile,
-      xmax = maxpercentile,
-      ymax = density
-    ),
-    colour = "white"
-  ) +
-  theme_bw() +
-  scale_x_continuous(breaks = c(seq(0, 1, 0.2)), labels = scales::percent(seq(0, 1, 0.2))) +
-  scale_y_continuous(breaks = c(seq(0, 3, 0.5))) +
-  theme(
-    legend.position = "bottom",
-    strip.background = element_rect(fill = "light grey")
-  ) +
-  scale_fill_manual(name = "Performance Rating", values = c(
-    "lightblue1",
-    "steelblue1",
-    "steelblue3",
-    "steelblue4"
-  )) +
-  labs(
-    x = "Percentile of Performance",
-    y = "Probability density"
-  ) +
-  facet_wrap(~actuary) +
-  theme(legend.position = "none")
-
-performance_rating_plot %>% ggplotly()
-```
-
 # **Work Experience**
 
 :::: {#tag-filter-container}
@@ -292,6 +232,17 @@ document.addEventListener('DOMContentLoaded', function() {
   // Collect all sections with tags
   const contentSections = document.querySelectorAll('[data-tags]');
   console.log(`Found ${contentSections.length} tagged sections`); // Debugging log
+  
+  // Define custom tag order
+  const tagOrder = [
+    'R',
+    'Longevity',
+    'Commercial Real Estate Loans',
+    'Internal Model',
+    'With Profits Management',
+    'Mentor'
+  ];
+
   // Collect unique tags
   const allTags = new Set();
   contentSections.forEach(section => {
@@ -301,6 +252,7 @@ document.addEventListener('DOMContentLoaded', function() {
       if (trimmedTag) allTags.add(trimmedTag);
     });
   });
+  
   // Get filter container
   const filterContainer = document.getElementById('tag-filter');
   console.log(`Tags found: ${Array.from(allTags)}`); // Debugging log
@@ -325,26 +277,29 @@ document.addEventListener('DOMContentLoaded', function() {
   `;
   document.head.appendChild(styleElement);
 
-  // Create checkboxes for each tag
-  Array.from(allTags).forEach(tag => {
-    // Create checkbox
-    const checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    checkbox.id = `tag-${tag}`;
-    checkbox.name = `tag-${tag}`;
-    checkbox.value = tag;
-    checkbox.checked = true;
-    
-    // Create label
-    const label = document.createElement('label');
-    label.htmlFor = `tag-${tag}`;
-    
-    // Add checkbox and text to label
-    label.appendChild(checkbox);
-    label.appendChild(document.createTextNode(tag));
-    
-    // Add to filter container
-    filterContainer.appendChild(label);
+  // Create checkboxes in the specified order
+  tagOrder.forEach(tag => {
+    // Only create checkbox if tag exists in document
+    if (allTags.has(tag)) {
+      // Create checkbox
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.id = `tag-${tag}`;
+      checkbox.name = `tag-${tag}`;
+      checkbox.value = tag;
+      checkbox.checked = true;
+      
+      // Create label
+      const label = document.createElement('label');
+      label.htmlFor = `tag-${tag}`;
+      
+      // Add checkbox and text to label
+      label.appendChild(checkbox);
+      label.appendChild(document.createTextNode(tag));
+      
+      // Add to filter container
+      filterContainer.appendChild(label);
+    }
   });
   
   // Visibility update function
@@ -376,15 +331,17 @@ document.addEventListener('DOMContentLoaded', function() {
   updateContentVisibility();
 });
 </script>
-
 ```
 
-
-### SCOR [(Employed as Contractor, Feb 2024 — Feb 2025)]{style="font-style: italic; font-size: 0.6em;"}
+### SCOR [(Employed as Contractor, Feb 2024 — Feb 2025)]{style="font-style: italic; font-size: 0.65em;"}
 
 **In my time at SCOR I was the lead R developer in a project to migrate the entire pricing model suite from Excel / SAS / Word into to a single R workflow.**
 
-#### R Developer for Longevity Pricing [(Feb 2024 — Feb 2025)]{style="font-style: italic; font-size: 0.8em;"}
+**SCOR were impressed with my work and offered an extension after 6 months.**
+
+**When the project was completed after 12 months, management stated that it was the first ever IT-based project they had known at SCOR to finish on-time and on-budget.**
+
+#### R Developer for Longevity Pricing [(Feb 2024 — Feb 2025)]{style="font-style: italic; font-size: 0.65em;"}
 
 ::: {.content-section data-tags="Longevity,R"}
 -   The initial project was completed for UK reinsurance pricing of BPA schemes. The project migrated the convoluted pricing process into a slick single R workflow. We revolutionised the pricing process at SCOR. I was the lead developer of an R package and Quarto book that together could perform all pricing calculations required, and produce html reports.
@@ -411,30 +368,31 @@ document.addEventListener('DOMContentLoaded', function() {
     -   Extensive reconciliation and testing
 :::
 
--   The initial contract was was for UK business and scheduled over 6 months. The project was completed successfully and to a high standard. The client, pleased with the product, decided to extend the contract for another 6 months to develop similar processes for non-UK business.
+### **Phoenix Group** [(Employed as Contractor, Apr 20243— Feb 2024)]{style="font-style: italic; font-size: 0.65em;"}
 
--   When the project was completed after 12 months I was informed by management that it was the first ever IT-based project they had known at SCOR to finish on-time and on-budget.
+**In my time at Phoenix I contributed to the assumptions structuring of the MG-Alfa capital model whilst working under the tight quarterly release cycle. I worked with incredibly complex spreadsheets that existed there, and often came up with innovative solutions to improve the neglected systems that were in place.**
 
-### **Phoenix Group** [(Employed as Contractor, Apr 20243— Feb 2024)]{style="font-style: italic; font-size: 0.6em;"}
+**Phoenix were impressed with my work and offered an extension after 6 months.**
 
-**In my time at Phoenix I contributed to the assumptions structuring of the MG-Alfa capital model whilst working under the tight quarterly business schedule.**
-
-#### Assumptions Architect for BPAs [(April 2023 — Feb 2024)]{style="font-style: italic; font-size: 0.8em;"}
-
--   Phoenix uses MG-Alfa as their main valuation platform. The tables fed into MG-Alfa were created through a set of complex Excel spreadsheets. In this role I developed and maintained these spreadsheets in co-ordination with the release cycle. 
+#### Assumptions Architect for BPAs [(April 2023 — Feb 2024)]{style="font-style: italic; font-size: 0.65em;"}
 
 ::: {.content-section data-tags="Longevity"}
--   Phoenix was rapidly expanding their BPA exposure, and had a large amount of assumptions that needed adding to their MG-Alfa capital model. I constructed the processes for this to significantly streamline the process. 
-::: 
-::: {.content-section data-tags="R"}
--   Whilst at Phoenix I created a sophisticated comparison tool in R which could compare two complex assumptions spreadsheets. By being able to replicate the tenets of how MG-Alfa reads table structures within R, the tool could produce an intelligent breakdown of assumption table changes which was superior to alternatives being used at the time (e.g. VBA cell-by-cell comparison, BeyondCompare). The tool was packaged and rolled out to other actuaries. 
+-   Phoenix was rapidly expanding their BPA exposure, and had a large amount of assumptions that needed adding to their MG-Alfa capital model. I constructed the processes for this to significantly streamline the process. This included automation with VBA.
 :::
 
-### **Royal London** [(Employed as Full-time employee, Sep 2012— Apr 2023)]{style="font-style: italic; font-size: 0.6em;"}
+::: {.content-section data-tags="R"}
+-   Whilst at Phoenix I noted that there was considerable manual burden on checking spreadsheet changes. I therefore took the initiative to create a sophisticated comparison tool in R which could compare two complex assumptions spreadsheets.
+
+-   By being able to replicate the tenets of how MG-Alfa reads table structures within R, the tool could produce an intelligent breakdown of assumption table changes which was superior to alternatives being used at the time (e.g. VBA cell-by-cell comparison, BeyondCompare). The tool was packaged and rolled out to other actuaries.
+:::
+
+### **Royal London** [(Employed as Full-time employee, Sep 2012— Apr 2023)]{style="font-style: italic; font-size: 0.65em;"}
 
 **I worked at Royal London for over 10 years, gaining my fellowship as well as a vast array of experience across many actuarial sectors.**
 
-#### Credit Quality Assessor of Commercial Real Estate Loans (CRELs) [(Aug 2021 — Apr 2023)]{style="font-style: italic; font-size: 0.8em;"}
+**During that time I built up a strong reputation as someone who was technically astute and dependable. During appraisals I was consistently rated in the higher categories.**
+
+#### Credit Quality Assessor of Commercial Real Estate Loans (CRELs) [(Aug 2021 — Apr 2023)]{style="font-style: italic; font-size: 0.65em;"}
 
 ::: {.content-section data-tags="Commercial Real Estate Loans"}
 -   Royal London looked to expand the illiquid asset classes it invests in as part of its Matching Adjustment portfolio. This entailed the inclusion of CRELs. In this role I developed an internal credit quality assessment process (ICQA) for CRELs. As this asset class was new to the company, it required a lot of development from ground level.
@@ -449,12 +407,12 @@ document.addEventListener('DOMContentLoaded', function() {
 :::
 
 ::: {.content-section data-tags="Mentor"}
-#### Actuarial Student Overseer [(Jun 2018 — Nov 2021)]{style="font-style: italic; font-size: 0.8em;"}
+#### Actuarial Student Overseer [(Jun 2018 — Nov 2021)]{style="font-style: italic; font-size: 0.65em;"}
 
 -   Volunteered as coordinator and adviser to over 60 students sitting exams at Royal London. This role has required strong communication and leadership skills. I made sure to always be approachable to the students, and keep open paths of dialogue. This position was also a volunteer position with the IFoA.
 :::
 
-#### Internal Model Calibrator [(Mar 2018 — Aug 2021)]{style="font-style: italic; font-size: 0.8em;"}
+#### Internal Model Calibrator [(Mar 2018 — Aug 2021)]{style="font-style: italic; font-size: 0.65em;"}
 
 ::: {.content-section data-tags="Internal Model, Longevity"}
 -   I worked on the development of the company’s Internal Model Application Process (IMAP) and produced complete insurance risk calibrations for Longevity Trend, Longevity Level, Mortality, Morbidity and Mortality Catastrophe risks.
@@ -468,7 +426,7 @@ document.addEventListener('DOMContentLoaded', function() {
 -   I have led many workshops to co-ordinate the opinions of experts in their respective fields, and form consensus on the assumptions and methodology used in the internal model calibrations.
 :::
 
-#### With Profits Management Actuary [(Sep 2012 — Mar 2018)]{style="font-style: italic; font-size: 0.8em;"}
+#### With Profits Management Actuary [(Sep 2012 — Mar 2018)]{style="font-style: italic; font-size: 0.65em;"}
 
 ::: {.content-section data-tags="With Profits Management"}
 -   Within this role I carried out regular analysis on bonus supportability for With Profits business. Royal London has a large portfolio of with profits business, often gained through acquisitions. Different business lines often has different methods/rules attached, giving me a broad and deep persepective on how with profits business can work.
