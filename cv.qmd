@@ -4,6 +4,25 @@ subtitle: "Life Actuary and R Developer"
 format: 
   html:
     fig-pos: "H"
+    include-in-header:
+      - text: |
+          <style>
+          #tag-filter {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+          }
+          #tag-filter label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+          }
+          </style>
 fig-width: 8.5
 fig-asp: 0.618
 out-width: "70%" 
@@ -15,6 +34,91 @@ execute:
 toc: true
 ---
 
+:::: {#tag-filter-container}
+<strong>Filter Content Tags:</strong>
+
+::: {#tag-filter}
+:::
+::::
+
+```{=html}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('Script started'); // Debugging log
+
+  // Collect all sections with tags
+  const contentSections = document.querySelectorAll('[data-tags]');
+  console.log(`Found ${contentSections.length} tagged sections`); // Debugging log
+
+  // Collect unique tags
+  const allTags = new Set();
+  contentSections.forEach(section => {
+    const tags = section.getAttribute('data-tags').split(',');
+    tags.forEach(tag => {
+      const trimmedTag = tag.trim();
+      if (trimmedTag) allTags.add(trimmedTag);
+    });
+  });
+
+  // Get filter container
+  const filterContainer = document.getElementById('tag-filter');
+  console.log(`Tags found: ${Array.from(allTags)}`); // Debugging log
+
+  // Create checkboxes for each tag
+  Array.from(allTags).forEach(tag => {
+    // Create checkbox
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.id = `tag-${tag}`;
+    checkbox.name = `tag-${tag}`;
+    checkbox.value = tag;
+    checkbox.checked = true;
+
+    // Create label
+    const label = document.createElement('label');
+    label.htmlFor = `tag-${tag}`;
+    label.style.marginRight = '10px';
+    
+    // Add checkbox and text to label
+    label.appendChild(checkbox);
+    label.appendChild(document.createTextNode(tag));
+
+    // Add to filter container
+    filterContainer.appendChild(label);
+  });
+
+  // Visibility update function
+  function updateContentVisibility() {
+    const activeFilters = Array.from(document.querySelectorAll('#tag-filter input:checked'))
+      .map(cb => cb.value);
+
+    console.log(`Active filters: ${activeFilters}`); // Debugging log
+
+    contentSections.forEach(section => {
+      const sectionTags = section.getAttribute('data-tags')
+        .split(',')
+        .map(tag => tag.trim())
+        .filter(tag => tag !== '');
+
+      // Show section if any of its tags are in active filters
+      const shouldShow = sectionTags.some(tag => activeFilters.includes(tag));
+      section.style.display = shouldShow ? '' : 'none';
+      
+      console.log(`Section tags: ${sectionTags}, Should show: ${shouldShow}`); // Debugging log
+    });
+  }
+
+  // Add change event to all checkboxes
+  document.querySelectorAll('#tag-filter input').forEach(checkbox => {
+    checkbox.addEventListener('change', updateContentVisibility);
+  });
+
+  // Initial visibility update
+  updateContentVisibility();
+});
+</script>
+```
+
 ```{r}
 #| label: setup
 #| include: false
@@ -24,7 +128,7 @@ library(gt)
 library(lubridate)
 library(plotly)
 
-data_loc <- "./about/Data"
+data_loc <- "./cv/Data"
 data_filename <- "Work History Summary.xlsx"
 
 # Read in data
@@ -42,7 +146,9 @@ cvdata <- read_all_excel_sheets(data_filepath)
 
 # **Summary**
 
--   I am a technical orientated Fellow of the Institute of Actuaries working in the life insurance industry for `r {floor(interval(ISOdate(2012,9,3), now()) / years(1))}` years, with `r {floor(interval(ISOdate(2017,12,1), now()) / years(1))}` years post qualification. I also have experience as an R developer.
+-   I am a technical orientated Fellow of the Institute of Actuaries working in the life insurance industry for `r {floor(interval(ISOdate(2012,9,3), now()) / years(1))}` years, with `r {floor(interval(ISOdate(2017,12,1), now()) / years(1))}` years post qualification.
+
+-   I am also experienced as an R developer and have built complex models, complete packages and everything on this website.
 
 <!-- -->
 
@@ -254,109 +360,131 @@ performance_rating_plot <-
 performance_rating_plot %>% ggplotly()
 ```
 
-::: callout-tip
-Choosing Paul Beard is a superior strategy to choosing an actuary at random.
-:::
-
 # **Work Experience**
 
-### **SCOR**
+### SCOR [(Employed as Contractor, Feb 2024 — Feb 2025)]{style="font-style: italic; font-size: 0.6em;"}
 
-*Employed as Contractor (Feb 2024 — Feb 2025)*
+**In my time at SCOR I was the lead R developer in a project to migrate the entire pricing model suite from Excel / SAS / Word into to a single R workflow.**
 
-#### R Developer for Longevity Pricing (Feb 2024 — Feb 2025)
+#### R Developer for Longevity Pricing [(Feb 2024 — Feb 2025)]{style="font-style: italic; font-size: 0.8em;"}
 
--   The initial project was completed for UK reinsurance pricing of BPA schemes. The project entailed migrating the entire pricing process from Excel / SAS / Word, to a single R workflow. I was the lead developer of an R package and Quarto book that together could perform all pricing calculations required.
+::: {.content-section data-tags="longevity,R"}
+-   The initial project was completed for UK reinsurance pricing of BPA schemes. The project migrated the convoluted pricing process into a slick single R workflow. We revolutionised the pricing process at SCOR. I was the lead developer of an R package and Quarto book that together could perform all pricing calculations required, and produce html reports.
 
--   The migration included building the many complex pricing models in R, some of these include:
-
+-   The migration included building many complex pricing models in R:
     -   Pension Value Escalation model
-
     -   Proportion Married & Proportion Transferred Out derivation models
-
     -   Experience Analysis model
-
     -   Actual vs Expected Analysis and Adjustment model
-
     -   Net Present Value Cashflow model
-
     -   Risk Based Cashflow (i.e. Stressed Capital Requirement) models
+:::
 
+::: {.content-section data-tags="R"}
 -   As well as being able to develop complex actuarial models, the project entailed the following:
-
-    -   High quality visualisations including interactivity
-
-    -   Extensive reconciliation and testing
-
     -   Developing functions that are flexible, fast and documented via Roxygen
-
+    -   Devloping a complete package of functions, data and tests that was rolled out to other actuaries
     -   Working with Git, Azure and Quarto
-
-    -   Development of code to interact directly with an API of Club Vita
-
+    -   Development of code to interact directly with an API of Club Vita to download mortality curves
     -   Consideration of usability, to develop a template that other actuaries, with less experience in R, could employ
+    -   High quality visualisations including interactivity
+    -   Extensive reconciliation and testing
+:::
 
--   The initial contract was was for UK business and scheduled over 6 months. The project was completed successfully and to a high standard. The client, pleased with the product, decided to extend the contract for another 6 months to develop similar processes for non-UK business .
+-   The initial contract was was for UK business and scheduled over 6 months. The project was completed successfully and to a high standard. The client, pleased with the product, decided to extend the contract for another 6 months to develop similar processes for non-UK business.
 
-### **Phoenix Group**
+-   When the project was completed after 12 months I was informed by management that it was the first ever IT-based project they had known at SCOR to finish on-time and on-budget.
 
-*Employed as Contractor (Apr 2023 — Feb 2024)*
+### **Phoenix Group** [(Employed as Contractor, Apr 20243— Feb 2024)]{style="font-style: italic; font-size: 0.6em;"}
 
-#### Assumptions Architect for BPAs (April 2023 — Feb 2024)
+**In my time at Phoenix I contributed to the assumptions structuring of the MG-Alfa capital model whilst working under the tight quarterly business schedule.**
 
--   Phoenix uses MG-Alfa as their main valuation platform. The tables fed into MG-Alfa were created through a set of complex spreadsheets. In this role I developed these spreadsheets in co-ordination with the release cycle.
+#### Assumptions Architect for BPAs [(April 2023 — Feb 2024)]{style="font-style: italic; font-size: 0.8em;"}
 
--   Whilst at Phoenix I created a sophisticated comparison tool in R which could compare two complex assumptions spreadsheets. By being able to replicate the tenets of how MG-Alfa reads table structures within R, the tool could produce an intelligent breakdown of assumption table changes which was superior to alternatives being used at the time (e.g. VBA cell-by-cell comparison, BeyondCompare). The tool was packaged and rolled out to other actuaries.
+-   Phoenix uses MG-Alfa as their main valuation platform. The tables fed into MG-Alfa were created through a set of complex Excel spreadsheets. In this role I developed and maintained these spreadsheets in co-ordination with the release cycle. 
 
-### **Royal London**
+::: {.content-section data-tags="longevity"}
+-   Phoenix was rapidly expanding their BPA exposure, and had a large amount of assumptions that needed adding to their MG-Alfa capital model. I constructed the processes for this to significantly streamline the process. 
+::: 
+::: {.content-section data-tags="R"}
+-   Whilst at Phoenix I created a sophisticated comparison tool in R which could compare two complex assumptions spreadsheets. By being able to replicate the tenets of how MG-Alfa reads table structures within R, the tool could produce an intelligent breakdown of assumption table changes which was superior to alternatives being used at the time (e.g. VBA cell-by-cell comparison, BeyondCompare). The tool was packaged and rolled out to other actuaries. 
+:::
 
-*Employed as Full-time Employee (Sep 2012 — Apr 2023)*
+### **Royal London** [(Employed as Full-time employee, Sep 2012— Apr 2023)]{style="font-style: italic; font-size: 0.6em;"}
 
-#### Credit Quality Assessor of Commercial Real Estate Loans (CRELs) (Aug 2021 — Apr 2023)
+**I worked at Royal London for over 10 years, gaining my fellowship as well as a vast array of experience across many actuarial sectors.**
 
+#### Credit Quality Assessor of Commercial Real Estate Loans (CRELs) [(Aug 2021 — Apr 2023)]{style="font-style: italic; font-size: 0.8em;"}
+
+::: {.content-section data-tags="commercial real estates loans"}
 -   Royal London looked to expand the illiquid asset classes it invests in as part of its Matching Adjustment portfolio. This entailed the inclusion of CRELs. In this role I developed an internal credit quality assessment process (ICQA) for CRELs. As this asset class was new to the company, it required a lot of development from ground level.
+:::
 
+::: {.content-section data-tags="commercial real estates loans, R"}
 -   As part of the role I created a complex stochastic model in R which captures the intricate cash flow structure of CRELs. The model simulates defaults across multiple correlated tenants over many time periods, and evaluates the outcomes of the loans to assess the credit quality. 
+:::
 
+::: {.content-section data-tags="internal model, commercial real estates loans"}
 -   After developing the ICQA process for CRELs, I then developed the internal model risk calibration for CREL risk.
+:::
 
-#### Actuarial Student Overseer (Jun 2018 — Nov 2021)
+::: {.content-section data-tags="mentor"}
+#### Actuarial Student Overseer [(Jun 2018 — Nov 2021)]{style="font-style: italic; font-size: 0.8em;"}
 
--   Volunteered as coordinator and adviser to over 60 students sitting exams at Royal London. This role has required strong communication and leadership skills. I made sure to always be approachable to the students, and keep open paths of dialogue. 
+-   Volunteered as coordinator and adviser to over 60 students sitting exams at Royal London. This role has required strong communication and leadership skills. I made sure to always be approachable to the students, and keep open paths of dialogue. This position was also a volunteer position with the IFoA.
+:::
 
-#### Internal Model Calibrator (Mar 2018 — Aug 2021)
+#### Internal Model Calibrator [(Mar 2018 — Aug 2021)]{style="font-style: italic; font-size: 0.8em;"}
 
--   I worked on the development of the company’s Internal Model Application Process (IMAP) and produced calibrations for Longevity, Persistency, Commodity, Property, Mortality/Morbidity risks, as well as Market-to-market Dependencies.
+::: {.content-section data-tags="internal model, longevity"}
+-   I worked on the development of the company’s Internal Model Application Process (IMAP) and produced complete insurance risk calibrations for Longevity Trend, Longevity Level, Mortality, Morbidity and Mortality Catastrophe risks.
+:::
+
+::: {.content-section data-tags="internal model"}
+-   I also produced IMAP calibrations for Persistency, Commodity and Property risk. I also completed calibration of Market-to-market Dependencies looking at correlations between major risk groups.
 
 -   Answered questions from both internal validators and the PRA about our IMAP methodology in a short period of time. Resolved validation findings in a timely manner.
 
 -   I have led many workshops to co-ordinate the opinions of experts in their respective fields, and form consensus on the assumptions and methodology used in the internal model calibrations.
+:::
 
-#### With Profits Management Actuary (Sep 2012 — Mar 2018)
+#### With Profits Management Actuary [(Sep 2012 — Mar 2018)]{style="font-style: italic; font-size: 0.8em;"}
 
--   Within this role I carried out regular analysis on bonus supportability for With Profits business and became a subject matter expert and led a team of actuarial staff to complete year end final bonus reports.
+::: {.content-section data-tags="with profits management"}
+-   Within this role I carried out regular analysis on bonus supportability for With Profits business. Royal London has a large portfolio of with profits business, often gained through acquisitions. Different business lines often has different methods/rules attached, giving me a broad and deep persepective on how with profits business can work.
+:::
 
--   I was involved in many with profits management tasks including (but not limited to) bonus setting, projections, run-off planning, estate distribution and remediations.
+::: {.content-section data-tags="with profits management, mentor"}
+-   After many years working in with profits I became a subject matter expert, culminating in me leading a team of five junior actuarial staff to complete the year end final bonus reports.
+:::
+
+::: {.content-section data-tags="with profits management"}
+-   I was involved in many with profits management tasks including (but not limited to) bonus setting, projections, run-off planning and estate distribution.
 
 -   I have been involved in many bespoke projects, the most material being:
-
-    -   Guaranteed Annuity Option (GAO) compromise scheme pricing
 
     -   Surrender value methodology development
 
     -   Prophet to MG-Alfa model reconciliation
 
+    -   Policyholder remediation calculations
+:::
+
+::: {.content-section data-tags="with profits management, longevity"}
+-   I was a major contributor to Royal London's Guaranteed Annuity Option (GAO) compromise scheme. In this scheme, Royal London bought GAOs from policyholders in return for a material uplift to their asset share. My role was calculating a fair price for Royal London to offer the policyholders, and this offer was submitted to and approved by the court for regulatory go-ahead.
+:::
+
 # **Other Projects**
 
 I write and publish articles applying actuarial tools to publicly available data. These include:
 
--   A mortality investigation of Coronation Street
+-   [A case study using A.I. to cleanse actuarial data](artificial_actuary_cod.qmd)
 
--   An internal model risk calibration for cryptocurrency risk
+-   A mortality investigation of Coronation Street
 
 -   An analysis of trends in IFoA exam pass rates
 
-The articles can be found below, along with the R code used to produce the analyses.
+The articles can be found below, along with the R code used to produce the analyses. Alternatively, some can be found on this website.
 
 Articles: <https://www.linkedin.com/in/paul-beard-78a420172/recent-activity/posts/> 
 
