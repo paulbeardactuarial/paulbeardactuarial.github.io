@@ -32,6 +32,7 @@ fig-cap-location: top
 execute:
   echo: false
 toc: true
+draft: true
 ---
 
 ```{r}
@@ -204,7 +205,7 @@ software_experience_plot %>% ggplotly(tooltip = c("y", "fill", "label"))
 # **Work Experience**
 
 :::: {#tag-filter-container}
-<strong>What Experience Are You Interested In?</strong>
+<strong>Choose Your Adventure. What Work Experience Are You Interested In?</strong>
 
 ::: {#tag-filter}
 :::
