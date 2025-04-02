@@ -12,6 +12,9 @@ Recently an actuarial colleague came across a problem. They wanted to categorise
 
 Before the AI overlords take over, and the only cause of mortality is simply "death by robot", I wanted to see if LLMs could help with this classification problem.
 
+::: major-section-break
+:::
+
 ```{r, define_gt_preferences}
 #| echo: false
 
@@ -574,12 +577,13 @@ create_comparison_table(cat_and_death_df)
 
 ```
 
+<br> <br>
 
-<br>
-<br>
+The code used to generate the results in this article can be found at: 
+<https://github.com/paulbeardactuarial/cause_of_death_with_LLM>
+
+<br> 
 
 ::: {.sign-off}
-
 This article was written by Paul Beard and first published on February 13, 2025
-
 :::
