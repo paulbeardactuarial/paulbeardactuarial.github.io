@@ -10,6 +10,12 @@ website:
         menu:
           - href: artificial_actuary_cod.qmd
             text: Classifying Causes of Death
+      - text: CMI_2022 Projection Model 
+        menu:
+          - href: https://paulbeardactuarial.shinyapps.io/cmi_dashboard
+            text: Full Demo
+          - href: https://paulbeardactuarial.shinyapps.io/cmi_dashboard_demo/
+            text: Partial Demo
   page-footer:
     background: light
     center: 
