@@ -13,9 +13,9 @@ website:
       - text: CMI_2022 Projection Model 
         menu:
           - href: https://paulbeardactuarial.shinyapps.io/cmi_dashboard
-            text: Full Demo
+            text: Full Demo (Log-in required)
           - href: https://paulbeardactuarial.shinyapps.io/cmi_dashboard_demo/
-            text: Partial Demo
+            text: Partial Demo (Free access)
   page-footer:
     background: light
     center: 
