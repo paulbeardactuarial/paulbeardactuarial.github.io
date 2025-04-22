@@ -15,7 +15,7 @@ website:
           - href: https://paulbeardactuarial.shinyapps.io/cmi_dashboard
             text: Full Demo (Log-in required)
           - href: https://paulbeardactuarial.shinyapps.io/cmi_dashboard_demo/
-            text: Partial Demo (Free access)
+            text: Partial Demo
   page-footer:
     background: light
     center: 
