@@ -472,6 +472,8 @@ document.addEventListener('DOMContentLoaded', function() {
 -   I was a major contributor to Royal London's Guaranteed Annuity Option (GAO) compromise scheme. In this scheme, Royal London bought GAOs from policyholders in return for a material uplift to their asset share. My role was calculating a fair price for Royal London to offer the policyholders. This offer was submitted to the court and approved as a mass buyback, where policyholders were opted in by default but could choose to opt out.
 :::
 
+------------------------------------------------------------------------
+
 # **Other Projects**
 
 I write actuarial-based articles on my LinkedIn profile. I am currently in the process of migrating these to my website. Some highlights include:
@@ -482,7 +484,6 @@ I write actuarial-based articles on my LinkedIn profile. I am currently in the p
 
 -   [Cryptocurrency: An Internal Model Risk Calibration](https://www.linkedin.com/pulse/cryptocurrency-risk-internal-model-calibration-paul-beard/?trackingId=cJtp6%2BzBRiu9duF57XLXgw%3D%3D): An article that demonstrates what an Internal Model calibration might look like for a hypothetical insurer exposed to cryptocurrency risk.
 
-<br>
-I have created a version of the CMI 2022 Projection Model in R. This version solves the APCI model to produce the exact same mortality projections as the official Excel model. I am in the process of trying to release it to more actuaries (depending on the outcome of talks with the CMI committee). 
+I have created a version of the CMI 2022 Projection Model in R. This version solves the APCI model to produce the exact same mortality projections as the official Excel model. I am in the process of trying to release it to more actuaries (depending on the outcome of talks with the CMI committee).
 
 There is currently an interactive dashboard connected to this model which can be explored [here](https://paulbeardactuarial.shinyapps.io/cmi_dashboard/). A password is required for access, however it can be disclosed upon request.

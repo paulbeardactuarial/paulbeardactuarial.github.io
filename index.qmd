@@ -29,7 +29,7 @@ library(lubridate)
 
 My name is Paul Beard. I am a technical orientated Fellow of the Institute of Actuaries working in the life insurance industry for over `r floor(interval(ISOdate(2012,9,1), now()) / years(1))` years, with over `r {floor(interval(ISOdate(2017,4,1), now()) / years(1))}` of those years being post qualification. 
 
-I am also experienced as a programmer (particularly R) and have built complex models, complete packages and everything on this website! 
+I am also experienced as a programmer (particularly) and have built complex models, complete packages and everything on this website! 
 
 The combination of these skills allows me to build end-to-end actuarial workflows in R. If you would like to upgrade your actuarial systems, please get in touch to find out what is possible.
 
