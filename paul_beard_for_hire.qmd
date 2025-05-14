@@ -59,13 +59,14 @@ cvdata <- read_all_excel_sheets(data_filepath)
 
 ```
 
--   I am a technically strong Fellow of the Institute of Actuaries working in the life insurance industry for `r {floor(interval(ISOdate(2012,9,3), now()) / years(1))}` years, with `r {floor(interval(ISOdate(2017,12,1), now()) / years(1))}` years post qualification.
+-   I am a technically strong Fellow of the Institute of Actuaries working in the life insurance industry for `r {floor(interval(ISOdate(2012,9,3), now()) / years(1))}` years, with `r {floor(interval(ISOdate(2017,4,1), now()) / years(1))}` years post qualification.
 
--   I am also experienced as an R developer and have built complex models, complete packages and everything on this website.
+-   I am an experienced coder. I have built complex models, complete packages and everything on this website! I have mastery over Excel and R, but am also adept across other platforms (see Software Experience). I understand good data and programming practices.
 
 -   I have a fantastic track record of performance, both academically and in a work environment.
 
-<div class="major-section-break"></div>
+::: major-section-break
+:::
 
 # **Qualifications**
 
@@ -105,11 +106,12 @@ Other achievements include:
 
 -   IFoA Certificate in Data Science (awarded by IFoA in Dec 2020)
 
-<div class="major-section-break"></div>
+::: major-section-break
+:::
 
 # **Software Experience**
 
-The plot below demonstrates my career experience, both total accumulation and the relative recency. The figures are estimates as at 31/12/2024.
+The plot below demonstrates my career experience, both total accumulation and the relative recency. The figures are estimates as at 30/06/2025.
 
 Please note the scale is logarithmic.
 
@@ -164,6 +166,9 @@ x.labels <- exp(x.breaks)
 # set up mid-year point for colour scale
 mid.year <-  min(years) + 0.5*(max(years) - min(years)) 
 
+# removing MG-Alfa as getting too cluttered
+exp_plot_data <- exp_plot_data |> 
+  filter(!platform %in% c("MG-Alfa"))
 
 # plot of software experience (final output)
 software_experience_plot <-
@@ -194,12 +199,14 @@ ggplot(exp_plot_data, aes(
   theme_classic() + 
   theme(panel.grid.major.x = element_line()) 
 
+
 software_experience_plot %>% ggplotly(tooltip = c("y", "fill", "label")) 
 
 
 ```
 
-<div class="major-section-break"></div>
+::: major-section-break
+:::
 
 # **Work Experience**
 
@@ -221,9 +228,9 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Define custom tag order
   const tagOrder = [
-    'R',
-    'Longevity',
-    'Commercial Real Estate Loans',
+    'R Developer',
+    'Annuity Pricing',
+    'Commercial Real Estate Loan Rating',
     'Internal Model',
     'With Profits Management',
     'Mentor'
@@ -326,30 +333,29 @@ document.addEventListener('DOMContentLoaded', function() {
   updateContentVisibility();
 });
 </script>
-
 ```
 
----
+------------------------------------------------------------------------
 
 ### SCOR [(Employed as Contractor, Feb 2024 — Feb 2025)]{style="font-style: italic; font-size: 0.65em;"}
 
 #### Overview
 
--   In my time at SCOR I was the lead R developer in a project to migrate the entire pricing model suite from Excel / SAS / Word into to a single R workflow.
+-   In my time at SCOR I was the lead R developer in a project to migrate the entire annuity pricing model suite from Excel / SAS / Word into to a single R workflow.
 
 -   SCOR were impressed with my work and offered an extension after 6 months.
 
--   When the project was completed after 12 months, management stated that it was the first ever IT-based project they had known at SCOR to finish on-time and on-budget.
+-   When the project was completed after 12 months, management stated it was the first ever IT-based project they had known at SCOR to finish on-time and on-budget.
 
-::: {.content-section data-tags="Longevity, R"}
-#### R Developer for Longevity Pricing [(Feb 2024 — Feb 2025)]{style="font-style: italic; font-size: 0.65em;"}
+::: {.content-section data-tags="Annuity Pricing, R Developer"}
+#### R Developer for Reinsurance Annuity Pricing Model Migration [(Feb 2024 — Feb 2025)]{style="font-style: italic; font-size: 0.65em;"}
 :::
 
-::: {.content-section data-tags="Longevity,R"}
+::: {.content-section data-tags="Annuity Pricing,R Developer"}
 -   The initial project was completed for UK reinsurance pricing of BPA schemes. The project migrated the convoluted pricing process into a slick single R workflow. We revolutionised the pricing process at SCOR. I was the lead developer of an R package and Quarto book that together could perform all pricing calculations required, and produce html reports.
 :::
 
-::: {.content-section data-tags="Longevity,R"}
+::: {.content-section data-tags="Annuity Pricing,R Developer"}
 -   The migration included building many complex pricing models in R:
     -   Pension Value Escalation model
     -   Proportion Married & Proportion Transferred Out derivation models
@@ -359,7 +365,7 @@ document.addEventListener('DOMContentLoaded', function() {
     -   Risk Based Cashflow (i.e. Stressed Capital Requirement) models
 :::
 
-::: {.content-section data-tags="R"}
+::: {.content-section data-tags="R Developer"}
 -   As well as being able to develop complex actuarial models, the project entailed the following:
     -   Developing functions that are flexible, fast and documented via Roxygen
     -   Devloping a complete package of functions, data and tests that was rolled out to other actuaries
@@ -370,7 +376,7 @@ document.addEventListener('DOMContentLoaded', function() {
     -   Extensive reconciliation and testing
 :::
 
----
+------------------------------------------------------------------------
 
 ### **Phoenix Group** [(Employed as Contractor, Apr 2023— Feb 2024)]{style="font-style: italic; font-size: 0.65em;"}
 
@@ -380,21 +386,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
 -   Phoenix were impressed with my work and offered an extension after 6 months.
 
-::: {.content-section data-tags="Longevity, R"}
+::: {.content-section data-tags="Longevity, R Developer"}
 #### Assumptions Architect for BPAs [(April 2023 — Feb 2024)]{style="font-style: italic; font-size: 0.65em;"}
 :::
 
-::: {.content-section data-tags="Longevity"}
--   Phoenix was rapidly expanding their BPA exposure, and had a large amount of assumptions that needed adding to their MG-Alfa capital model. I constructed the processes for this to significantly streamline the process. This included automation with VBA.
-:::
-
-::: {.content-section data-tags="R"}
+::: {.content-section data-tags="R Developer"}
 -   Whilst at Phoenix I noted that there was considerable manual burden on checking spreadsheet changes. I therefore took the initiative to create a sophisticated comparison tool in R which could compare two complex assumptions spreadsheets.
 
 -   By being able to replicate the tenets of how MG-Alfa reads table structures within R, the tool could produce an intelligent breakdown of assumption table changes which was superior to alternatives being used at the time (e.g. VBA cell-by-cell comparison, BeyondCompare). The tool was packaged and rolled out to other actuaries.
 :::
 
----
+------------------------------------------------------------------------
 
 ### **Royal London** [(Employed as Permanent, Sep 2012— Apr 2023)]{style="font-style: italic; font-size: 0.65em;"}
 
@@ -404,33 +406,33 @@ document.addEventListener('DOMContentLoaded', function() {
 
 -   During that time I built up a strong reputation as someone who was technically astute and dependable. During appraisals I was consistently rated in the higher categories.
 
-::: {.content-section data-tags="Commercial Real Estate Loans, R, Internal Model"}
+::: {.content-section data-tags="Commercial Real Estate Loan Rating, R Developer, Internal Model"}
 #### Credit Quality Assessor of Commercial Real Estate Loans (CRELs) [(Aug 2021 — Apr 2023)]{style="font-style: italic; font-size: 0.65em;"}
-::: 
+:::
 
-::: {.content-section data-tags="Commercial Real Estate Loans"}
+::: {.content-section data-tags="Commercial Real Estate Loan Rating"}
 -   Royal London looked to expand the illiquid asset classes it invests in as part of its Matching Adjustment portfolio. This entailed the inclusion of CRELs. In this role I developed an internal credit quality assessment process (ICQA) for CRELs. As this asset class was new to the company, it required a lot of development from ground level.
 :::
 
-::: {.content-section data-tags="Commercial Real Estate Loans, R"}
+::: {.content-section data-tags="Commercial Real Estate Loan Rating, R Developer"}
 -   As part of the role I created a complex stochastic model in R which captures the intricate cash flow structure of CRELs. The model simulates defaults across multiple correlated tenants over many time periods, and evaluates the outcomes of the loans to assess the credit quality. 
 :::
 
-::: {.content-section data-tags="Internal Model, Commercial Real Estate Loans"}
+::: {.content-section data-tags="Internal Model, Commercial Real Estate Loan Rating"}
 -   After developing the ICQA process for CRELs, I then developed the internal model risk calibration for CREL risk.
 :::
 
 ::: {.content-section data-tags="Mentor"}
 #### Actuarial Student Overseer [(Jun 2018 — Nov 2021)]{style="font-style: italic; font-size: 0.65em;"}
 
--   Volunteered as coordinator and adviser to over 60 students sitting exams at Royal London. This role has required strong communication and leadership skills. I made sure to always be approachable to the students, and keep open paths of dialogue. This role was also a volunteer position (Student Employer Contact) with the IFoA.
+-   Volunteered as coordinator and adviser to over 60 students sitting exams at Royal London. This role has required strong communication and leadership skills. I made sure to always be approachable to the students, and keep open paths of dialogue. This role was also an official volunteer position (Student Employer Contact) with the IFoA.
 :::
 
-::: {.content-section data-tags="Longevity, Internal Model"}
+::: {.content-section data-tags="Internal Model"}
 #### Internal Model Calibrator [(Mar 2018 — Aug 2021)]{style="font-style: italic; font-size: 0.65em;"}
 :::
 
-::: {.content-section data-tags="Internal Model, Longevity"}
+::: {.content-section data-tags="Internal Model"}
 -   I worked on the development of the company’s Internal Model Application Process (IMAP) and produced complete insurance risk calibrations for Longevity Trend, Longevity Level, Mortality, Morbidity and Mortality Catastrophe risks.
 :::
 
@@ -442,7 +444,7 @@ document.addEventListener('DOMContentLoaded', function() {
 -   I have led many workshops to co-ordinate the opinions of experts in their respective fields, and form consensus on the assumptions and methodology used in the internal model calibrations.
 :::
 
-::: {.content-section data-tags="Longevity, With Profits Management, Mentor"}
+::: {.content-section data-tags="Annuity Pricing, With Profits Management, Mentor"}
 #### With Profits Management Actuary [(Sep 2012 — Mar 2018)]{style="font-style: italic; font-size: 0.65em;"}
 :::
 
@@ -466,7 +468,21 @@ document.addEventListener('DOMContentLoaded', function() {
     -   Policyholder remediation calculations
 :::
 
-::: {.content-section data-tags="With Profits Management, Longevity"}
--   I was a major contributor to Royal London's Guaranteed Annuity Option (GAO) compromise scheme. In this scheme, Royal London bought GAOs from policyholders in return for a material uplift to their asset share. My role was calculating a fair price for Royal London to offer the policyholders, and this offer was submitted to and approved by the court for regulatory go-ahead.
+::: {.content-section data-tags="With Profits Management, Annuity Pricing"}
+-   I was a major contributor to Royal London's Guaranteed Annuity Option (GAO) compromise scheme. In this scheme, Royal London bought GAOs from policyholders in return for a material uplift to their asset share. My role was calculating a fair price for Royal London to offer the policyholders. This offer was submitted to the court and approved as a mass buyback, where policyholders were opted in by default but could choose to opt out.
 :::
 
+# **Other Projects**
+
+I write actuarial-based articles on my LinkedIn profile. I am currently in the process of migrating these to my website. Some highlights include:
+
+-   [Artificial Actuary (Classifying Causes of Death)](https://paulbeardactuarial.github.io/artificial_actuary_cod.html): An article that leverages the use of LLMs via an API connection to cleanse / categorise cause of death data.
+
+-   [Coronation Street: The Most Dangerous Street in the UK?](https://www.linkedin.com/pulse/coronation-street-most-dangerous-uk-paul-beard/?trackingId=cJtp6%2BzBRiu9duF57XLXgw%3D%3D): An article that tries to make sense of the mortality rates experienced on the TV show 'Coronation Street'.
+
+-   [Cryptocurrency: An Internal Model Risk Calibration](https://www.linkedin.com/pulse/cryptocurrency-risk-internal-model-calibration-paul-beard/?trackingId=cJtp6%2BzBRiu9duF57XLXgw%3D%3D): An article that demonstrates what an Internal Model calibration might look like for a hypothetical insurer exposed to cryptocurrency risk.
+
+<br>
+I have created a version of the CMI 2022 Projection Model in R. This version solves the APCI model to produce the exact same mortality projections as the official Excel model. I am in the process of trying to release it to more actuaries (depending on the outcome of talks with the CMI committee). 
+
+There is currently an interactive dashboard connected to this model which can be explored [here](https://paulbeardactuarial.shinyapps.io/cmi_dashboard/). A password is required for access, however it can be disclosed upon request.
