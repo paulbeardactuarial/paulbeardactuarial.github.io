@@ -472,7 +472,8 @@ document.addEventListener('DOMContentLoaded', function() {
 -   I was a major contributor to Royal London's Guaranteed Annuity Option (GAO) compromise scheme. In this scheme, Royal London bought GAOs from policyholders in return for a material uplift to their asset share. My role was calculating a fair price for Royal London to offer the policyholders. This offer was submitted to the court and approved as a mass buyback, where policyholders were opted in by default but could choose to opt out.
 :::
 
-------------------------------------------------------------------------
+::: major-section-break
+:::
 
 # **Other Projects**
 
