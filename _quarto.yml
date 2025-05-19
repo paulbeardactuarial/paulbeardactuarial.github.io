@@ -16,6 +16,10 @@ website:
             text: Full Demo (Log-in required)
           - href: https://paulbeardactuarial.shinyapps.io/cmi_dashboard_demo/
             text: Partial Demo
+      - text: Visualisations Gallery 
+        menu:
+          - href: visuals.qmd
+            text: Visualisations Gallery
   page-footer:
     background: light
     center: 

@@ -1,20 +1,27 @@
 ---
-title: "Visual Gallery"
+title: "Visualisations Gallery"
 format: html
 ---
 
-# Gallery of Visualisations
+The following is a sample of visualisations produced using "Tidy Tuesday" data sets:\
+\
 
-The following is a sample of visualisations produced using "Tidy Tuesday" data sets:
+### Palm Trees: Comparison of Species' Heights
+\
+![Palm Trees – March 18, 2025](TT%20visuals/2025-03-18%20palmtrees.png){fig-align="left" width="80%"}
 
-## Long Beach Animals: Cat Birthday Distributions
-![Long Beach – March 4, 2025]("TT visuals/2025-03-04 longbeach.png"){width=60%}
+\
+\
 
-## Pixar: Film Ratings of Sequals
-![Pixar – March 11, 2025]("TT visuals/2025-03-11 pixar.png"){width=60%}
+### Pixar: Film Ratings of Sequels
+\
+![Pixar – March 11, 2025](TT%20visuals/2025-03-11%20pixar.png){alt="Pixar – March 11, 2025" fig-align="left" width="80%"}
 
-## Palm Trees: Comparison of Species' Heights
-![Palm Trees – March 18, 2025]("TT visuals/2025-03-18 palmtrees.png"){width=60%}
+\
+\
 
-## Amazon Report Words: Emoji Cloud
-![Static Report Words – March 25, 2025]("TT visuals/2025-03-25 report_words_static_version.png"){width=60%}
+### Long Beach Animals: Cat Birthday Distributions
+\
+![Long Beach – March 4, 2025](TT%20visuals/2025-03-04%20longbeach.png){alt="Long Beach – March 4, 2025" fig-align="left" width="80%"}
+
+\
