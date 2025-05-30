@@ -6,7 +6,7 @@ plot_empirical_returns <-
     p1 <-
       market_data |>
       ggplot(mapping = aes(x = date, y = log_returns, color = crypto, data_id = crypto)) +
-      geom_line_interactive(size = 0.8) +
+      ggiraph::geom_line_interactive(size = 0.8) +
       geom_hline(yintercept = 0) +
       theme_classic() +
       theme(
@@ -21,8 +21,8 @@ plot_empirical_returns <-
     p2 <-
       market_data |>
       ggplot(mapping = aes(x = log_returns, fill = crypto, data_id = crypto)) +
-      geom_histogram_interactive(size = 1, bins = 10) +
-      geom_text_interactive(
+      ggiraph::geom_histogram_interactive(size = 1, bins = 10) +
+      ggiraph::geom_text_interactive(
         data = market_data |> slice_max(by = crypto, n = 1, order_by = date),
         mapping = aes(label = crypto, color = crypto, x = 0, y = Inf),
         hjust = 1,
@@ -59,10 +59,10 @@ plot_empirical_returns <-
     p3 <-
       market_data |>
       ggplot(mapping = aes(x = crypto, y = log_returns, fill = crypto, color = crypto, data_id = crypto)) +
-      geom_violin_interactive() +
+      ggiraph::geom_violin_interactive() +
       scale_fill_manual(values = crypto_colours) +
       scale_color_manual(values = crypto_colours) +
-      geom_text_interactive(
+      ggiraph::geom_text_interactive(
         data = data.frame(crypto = unique(market_data$crypto), y_label = market_data$log_returns |> min(na.rm = T)),
         mapping = aes(label = crypto, color = crypto, x = crypto, y = y_label),
         hjust = 0.5,
@@ -85,12 +85,12 @@ plot_empirical_returns <-
     patchwork_plot <- (p1 / p2)
 
     output <-
-      girafe(
+      ggiraph::girafe(
         ggobj = patchwork_plot,
         options = list(
-          opts_hover(css = ""),
-          opts_hover_inv(css = "opacity:0.15;"),
-          opts_sizing(rescale = T)
+          ggiraph::opts_hover(css = ""),
+          ggiraph::opts_hover_inv(css = "opacity:0.15;"),
+          ggiraph::opts_sizing(rescale = T)
         )
       )
 

@@ -8,7 +8,7 @@ execute:
   warning: false
 ---
 
-![](crypto_calibration/images/ChatGPT%20Image%20May%2030,%202025,%2002_36_32%20PM.png){width="1000" height="400"}
+![](crypto_calibration/images/ChatGPT%20Image%20May%2030,%202025,%2002_36_32%20PM.png){width="800" height="500"}
 
 Cryptocurrency first manifested into existence in 2008, when the first ever Bitcoin was mined. It has since grown, with thousands of variants now available to purchase by the armchair investor. Some financial institutions have also gotten in on the game, although the level of trading pales compared to other major asset classes.
 
@@ -22,7 +22,6 @@ By applying principles used by insurance companies in asset risk calibration, I 
 
 library(ggplot2)
 library(tidyverse)
-library(ggiraph)
 library(patchwork)
 library(fitdistrplus) # <- required for t.scaled/normal distribution
 library(metRology) # <- required for t.scaled distribution
@@ -139,10 +138,10 @@ We performed an array of stationarity tests on the Bitcoin dataset. In all cases
 The index data looks as follows:
 
 ```{r}
-#| labels: crypto over time
+#| label: open prices plot
 #| echo: false
 
-market_data |> plot_open_over_time()
+plot_open_over_time(market_data)
 
 ```
 
@@ -168,9 +167,74 @@ We present the empirical data for our 4 chosen cryptocurrencies in the plots bel
 #| label: annual change plot
 #| echo: false
 
-market_data |>
-  dplyr::filter(!is.na(log_returns)) |>
-  plot_empirical_returns(crypto_colours)
+
+    # plot 1 - log returns line plot over time
+    p1 <-
+      market_data |>
+      ggplot(mapping = aes(x = date, y = log_returns, color = crypto, data_id = crypto)) +
+      ggiraph::geom_line_interactive(size = 0.8) +
+      geom_hline(yintercept = 0) +
+      theme_classic() +
+      theme(
+        legend.position = "none",
+        axis.text.x = element_text(angle = 45, hjust = 1, family = "sans")
+      ) +
+      scale_x_date(breaks = "1 years", name = "") +
+      scale_y_continuous(name = "Annual Log Returns", labels = scales::label_percent()) +
+      scale_color_manual(values = crypto_colours)
+
+    # plot 2 - log returns histogram
+    p2 <-
+      market_data |>
+      ggplot(mapping = aes(x = log_returns, fill = crypto, data_id = crypto)) +
+      ggiraph::geom_histogram_interactive(size = 1, bins = 10) +
+      ggiraph::geom_text_interactive(
+        data = market_data |> slice_max(by = crypto, n = 1, order_by = date),
+        mapping = aes(label = crypto, color = crypto, x = 0, y = Inf),
+        hjust = 1,
+        vjust = 1.5,
+        size = 4,
+        angle = 90,
+        fontface = "bold"
+      ) +
+      geom_vline(xintercept = 0) +
+      theme_classic() +
+      theme(
+        legend.position = "none",
+        axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        axis.line.y = element_blank()
+      ) +
+      theme(
+        legend.position = "none",
+        axis.text.x = element_text(angle = 45, hjust = 1, family = "sans")
+      ) +
+      scale_fill_manual(values = crypto_colours) +
+      scale_color_manual(values = crypto_colours) +
+      scale_y_continuous(name = "") +
+      scale_x_continuous(labels = scales::label_percent(), name = "") +
+      facet_wrap(vars(crypto), nrow = 1) +
+      theme(
+        strip.text = element_blank(),
+        strip.background = element_blank(),
+        axis.text.y = element_blank()
+      ) +
+      coord_cartesian(ylim = as.Date(c(0, NA)))
+
+    patchwork_plot <- (p1 / p2)
+
+    annual_change_plot <-
+      ggiraph::girafe(
+        ggobj = patchwork_plot,
+        options = list(
+          ggiraph::opts_hover(css = ""),
+          ggiraph::opts_hover_inv(css = "opacity:0.15;"),
+          ggiraph::opts_sizing(rescale = T)
+        )
+      )
+
+    annual_change_plot
+
 
 ```
 
@@ -495,7 +559,7 @@ corr_df |>
                alpha = 1,
                size = 20,
                color = "grey35") +
-  geom_point_interactive(
+  ggiraph::geom_point_interactive(
     mapping = aes(fill = correlation,
                   tooltip = glue::glue("{asset_2} vs {asset_1}:",
                                        "<br>",
@@ -531,7 +595,7 @@ corr_df |>
   )
 
 
-girafe(ggobj = corr_plot_gg,
+ggiraph::girafe(ggobj = corr_plot_gg,
        options = list(ggiraph::opts_tooltip(css = "color:black; padding: 6px; border-radius: 10px; ", use_fill = TRUE)))
 
 
@@ -571,12 +635,12 @@ The following conclusions can be made:
 
 -   Given all these points above, we would expect the overall biting scenario for a major insurer to see cryptocurrency value completely decimated. The conclusion reached is that **almost all assets held as cryptocurrency will increase the SCR of a company by a similar amount**. This conclusion might lead an actuary to question how capital efficient it is to invest in crypto.
 
-<br> <br>
+<br>
 
 The code used to generate the results in this article can be found at: <https://github.com/paulbeardactuarial/crypto_calibration>
 
 <br>
 
-::: {.sign-off}
+::: sign-off
 This article was written by Paul Beard and published on 30th May 2025
 :::

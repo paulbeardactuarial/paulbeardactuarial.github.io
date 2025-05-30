@@ -10,6 +10,10 @@ website:
         menu:
           - href: artificial_actuary_cod.qmd
             text: Classifying Causes of Death
+      - text: Internal Model 
+        menu:
+          - href: crypto_calibration.qmd
+            text: Cryptocurrency Risk Calibration
       - text: CMI_2022 Projection Model 
         menu:
           - href: https://paulbeardactuarial.shinyapps.io/cmi_dashboard
