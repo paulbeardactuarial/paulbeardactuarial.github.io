@@ -58,6 +58,84 @@
       "Maintainer": "Kirill Müller <kirill@cynkra.com>",
       "Repository": "CRAN"
     },
+    "DEoptimR": {
+      "Package": "DEoptimR",
+      "Version": "1.1-3-1",
+      "Source": "Repository",
+      "Date": "2024-11-23",
+      "Title": "Differential Evolution Optimization in Pure R",
+      "Authors@R": "c( person(c(\"Eduardo\", \"L. T.\"), \"Conceicao\", role = c(\"aut\", \"cre\"), email = \"mail@eduardoconceicao.org\"), person(\"Martin\", \"Maechler\", role = \"ctb\", email = \"maechler@stat.math.ethz.ch\", comment = c(ORCID = \"0000-0002-8685-9910\")) )",
+      "URL": "svn://svn.r-forge.r-project.org/svnroot/robustbase/pkg/DEoptimR",
+      "Description": "Differential Evolution (DE) stochastic heuristic algorithms for global optimization of problems with and without general constraints. The aim is to curate a collection of its variants that (1) do not sacrifice simplicity of design, (2) are essentially tuning-free, and (3) can be efficiently implemented directly in the R language. Currently, it provides implementations of the algorithms 'jDE' by Brest et al. (2006) <doi:10.1109/TEVC.2006.872133> for single-objective optimization and 'NCDE' by Qu et al. (2012) <doi:10.1109/TEVC.2011.2161873> for multimodal optimization (single-objective problems with multiple solutions).",
+      "Imports": [
+        "stats"
+      ],
+      "Enhances": [
+        "robustbase"
+      ],
+      "License": "GPL (>= 2)",
+      "Author": "Eduardo L. T. Conceicao [aut, cre], Martin Maechler [ctb] (<https://orcid.org/0000-0002-8685-9910>)",
+      "Maintainer": "Eduardo L. T. Conceicao <mail@eduardoconceicao.org>",
+      "Repository": "CRAN",
+      "Repository/R-Forge/Project": "robustbase",
+      "Repository/R-Forge/Revision": "1008",
+      "Repository/R-Forge/DateTimeStamp": "2024-11-23 19:13:45",
+      "NeedsCompilation": "no",
+      "Encoding": "UTF-8"
+    },
+    "DistributionUtils": {
+      "Package": "DistributionUtils",
+      "Version": "0.6-2",
+      "Source": "Repository",
+      "Date": "2025-03-29",
+      "Title": "Distribution Utilities",
+      "Authors@R": "person(given = \"David\", family = \"Scott\", role = c(\"aut\", \"cre\"), email = \"d.scott@auckland.ac.nz\")",
+      "Maintainer": "David Scott <d.scott@auckland.ac.nz>",
+      "Depends": [
+        "R (>= 3.0.1)"
+      ],
+      "Suggests": [
+        "GeneralizedHyperbolic",
+        "VarianceGamma",
+        "SkewHyperbolic",
+        "RUnit"
+      ],
+      "Encoding": "UTF-8",
+      "Description": "Utilities are provided which are of use in the packages I have developed for dealing with distributions. Currently these packages are GeneralizedHyperbolic, VarianceGamma, and SkewHyperbolic and NormalLaplace. Each of these packages requires DistributionUtils. Functionality includes sample skewness and kurtosis, log-histogram, tail plots, moments by integration, changing the point about which a moment is calculated, functions for testing distributions using inversion tests and the Massart inequality. Also includes an implementation of the incomplete Bessel K function.",
+      "License": "GPL (>= 2)",
+      "NeedsCompilation": "yes",
+      "Author": "David Scott [aut, cre]",
+      "Repository": "CRAN"
+    },
+    "GeneralizedHyperbolic": {
+      "Package": "GeneralizedHyperbolic",
+      "Version": "0.8-7",
+      "Source": "Repository",
+      "Date": "2025-03-29",
+      "Title": "The Generalized Hyperbolic Distribution",
+      "Authors@R": "person(given = \"David\", family = \"Scott\", role = c(\"aut\", \"cre\"), email = \"d.scott@auckland.ac.nz\")",
+      "Maintainer": "David Scott <d.scott@auckland.ac.nz>",
+      "Depends": [
+        "R (>= 3.0.1)"
+      ],
+      "Imports": [
+        "DistributionUtils",
+        "MASS"
+      ],
+      "Suggests": [
+        "VarianceGamma",
+        "actuar",
+        "SkewHyperbolic",
+        "RUnit"
+      ],
+      "Encoding": "UTF-8",
+      "Description": "Functions for the hyperbolic and related distributions. Density, distribution and quantile functions and random number generation are provided for the hyperbolic distribution, the generalized hyperbolic distribution, the generalized inverse Gaussian distribution and the skew-Laplace distribution. Additional functionality is provided for the hyperbolic distribution, normal inverse Gaussian distribution and generalized inverse Gaussian distribution, including fitting of these distributions to data. Linear models with hyperbolic errors may be fitted using hyperblmFit.",
+      "License": "GPL (>= 2)",
+      "URL": "https://r-forge.r-project.org/projects/rmetrics/",
+      "NeedsCompilation": "no",
+      "Author": "David Scott [aut, cre]",
+      "Repository": "CRAN"
+    },
     "MASS": {
       "Package": "MASS",
       "Version": "7.3-64",
@@ -246,6 +324,33 @@
       "Biarch": "true",
       "Author": "Jeroen Ooms [aut, cre] (<https://orcid.org/0000-0002-4035-0289>), Jan Marvin Garbuszus [ctb]",
       "Maintainer": "Jeroen Ooms <jeroenooms@gmail.com>",
+      "Repository": "CRAN"
+    },
+    "VarianceGamma": {
+      "Package": "VarianceGamma",
+      "Version": "0.4-2",
+      "Source": "Repository",
+      "Date": "2023-11-26",
+      "Title": "The Variance Gamma Distribution",
+      "Author": "David Scott <d.scott@auckland.ac.nz> and Christine Yang Dong <c.dong@auckland.ac.nz>",
+      "Maintainer": "David Scott <d.scott@auckland.ac.nz>",
+      "Depends": [
+        "R (>= 3.0.1)"
+      ],
+      "Imports": [
+        "grDevices",
+        "graphics",
+        "stats",
+        "DistributionUtils",
+        "GeneralizedHyperbolic"
+      ],
+      "Suggests": [
+        "RUnit"
+      ],
+      "Encoding": "UTF-8",
+      "Description": "Provides functions for the variance gamma distribution. Density, distribution and quantile functions. Functions for random number generation and fitting of the variance gamma to data. Also, functions for computing moments of the variance gamma distribution of any order about any location. In addition, there are functions for checking the validity of parameters and to interchange different sets of parameterizations for the variance gamma distribution.",
+      "License": "GPL (>= 2)",
+      "NeedsCompilation": "no",
       "Repository": "CRAN"
     },
     "askpass": {
@@ -1406,6 +1511,48 @@
       "Maintainer": "Winston Chang <winston@posit.co>",
       "Repository": "CRAN"
     },
+    "fitdistrplus": {
+      "Package": "fitdistrplus",
+      "Version": "1.2-2",
+      "Source": "Repository",
+      "Title": "Help to Fit of a Parametric Distribution to Non-Censored or Censored Data",
+      "Authors@R": "c(person(\"Marie-Laure\", \"Delignette-Muller\", role = \"aut\", email = \"marielaure.delignettemuller@vetagro-sup.fr\", comment = c(ORCID = \"0000-0001-5453-3994\")), person(\"Christophe\", \"Dutang\", role = \"aut\", email = \"christophe.dutang@ensimag.fr\", comment = c(ORCID = \"0000-0001-6732-1501\")), person(\"Regis\", \"Pouillot\", role = \"ctb\"), person(\"Jean-Baptiste\", \"Denis\", role = \"ctb\"), person(\"Aurélie\", \"Siberchicot\", role = c(\"aut\", \"cre\"), email = \"aurelie.siberchicot@univ-lyon1.fr\", comment = c(ORCID = \"0000-0002-7638-8318\")))",
+      "Description": "Extends the fitdistr() function (of the MASS package) with several functions  to help the fit of a parametric distribution to non-censored or censored data.  Censored data may contain left censored, right censored and interval censored values,  with several lower and upper bounds. In addition to maximum likelihood estimation (MLE),  the package provides moment matching (MME), quantile matching (QME), maximum goodness-of-fit  estimation (MGE) and maximum spacing estimation (MSE) methods (available only for  non-censored data). Weighted versions of MLE, MME, QME and MSE are available. See e.g.  Casella & Berger (2002), Statistical inference, Pacific Grove, for a general introduction  to parametric estimation.",
+      "Depends": [
+        "R (>= 3.5.0)",
+        "MASS",
+        "grDevices",
+        "survival",
+        "methods"
+      ],
+      "Imports": [
+        "stats",
+        "rlang"
+      ],
+      "Suggests": [
+        "actuar",
+        "rgenoud",
+        "mc2d",
+        "gamlss.dist",
+        "knitr",
+        "ggplot2",
+        "GeneralizedHyperbolic",
+        "rmarkdown",
+        "Hmisc",
+        "bookdown"
+      ],
+      "VignetteBuilder": "knitr",
+      "BuildVignettes": "true",
+      "License": "GPL (>= 2)",
+      "Encoding": "UTF-8",
+      "URL": "https://lbbe-software.github.io/fitdistrplus/, https://lbbe.univ-lyon1.fr/fr/fitdistrplus, https://github.com/lbbe-software/fitdistrplus",
+      "BugReports": "https://github.com/lbbe-software/fitdistrplus/issues",
+      "Contact": "Marie-Laure Delignette-Muller <marielaure.delignettemuller@vetagro-sup.fr> or Christophe Dutang <christophe.dutang@ensimag.fr>",
+      "NeedsCompilation": "no",
+      "Author": "Marie-Laure Delignette-Muller [aut] (<https://orcid.org/0000-0001-5453-3994>), Christophe Dutang [aut] (<https://orcid.org/0000-0001-6732-1501>), Regis Pouillot [ctb], Jean-Baptiste Denis [ctb], Aurélie Siberchicot [aut, cre] (<https://orcid.org/0000-0002-7638-8318>)",
+      "Maintainer": "Aurélie Siberchicot <aurelie.siberchicot@univ-lyon1.fr>",
+      "Repository": "CRAN"
+    },
     "fontawesome": {
       "Package": "fontawesome",
       "Version": "0.5.3",
@@ -1604,6 +1751,60 @@
       "NeedsCompilation": "no",
       "Author": "Hadley Wickham [aut, cre], Max Kuhn [aut], Davis Vaughan [aut], RStudio [cph]",
       "Maintainer": "Hadley Wickham <hadley@rstudio.com>",
+      "Repository": "CRAN"
+    },
+    "ggiraph": {
+      "Package": "ggiraph",
+      "Version": "0.8.13",
+      "Source": "Repository",
+      "Type": "Package",
+      "Title": "Make 'ggplot2' Graphics Interactive",
+      "Authors@R": "c( person(\"David\", \"Gohel\", , \"david.gohel@ardata.fr\", role = c(\"aut\", \"cre\")), person(\"Panagiotis\", \"Skintzos\", , \"sigmapi@posteo.net\", role = \"aut\"), person(\"Mike\", \"Bostock\", role = \"cph\", comment = \"d3.js\"), person(\"Speros\", \"Kokenes\", role = \"cph\", comment = \"d3-lasso\"), person(\"Eric\", \"Shull\", role = \"cph\", comment = \"saveSvgAsPng js library\"), person(\"Lee\", \"Thomason\", role = \"cph\", comment = \"TinyXML2\"), person(\"Vladimir\", \"Agafonkin\", role = \"cph\", comment = \"Flatbush\"), person(\"Eric\", \"Book\", role = \"ctb\", comment = \"hline and vline geoms\") )",
+      "Description": "Create interactive 'ggplot2' graphics using 'htmlwidgets'.",
+      "License": "GPL-3",
+      "URL": "https://davidgohel.github.io/ggiraph/",
+      "BugReports": "https://github.com/davidgohel/ggiraph/issues",
+      "Imports": [
+        "cli",
+        "ggplot2 (>= 3.5.1)",
+        "grid",
+        "htmltools",
+        "htmlwidgets (>= 1.5)",
+        "purrr",
+        "Rcpp (>= 1.0)",
+        "rlang",
+        "stats",
+        "systemfonts",
+        "uuid",
+        "vctrs"
+      ],
+      "Suggests": [
+        "dplyr",
+        "gdtools (>= 0.3.0)",
+        "ggrepel (>= 0.9.1)",
+        "hexbin",
+        "knitr",
+        "maps",
+        "quantreg",
+        "rmarkdown",
+        "sf (>= 1.0)",
+        "shiny",
+        "tinytest",
+        "xml2 (>= 1.0)"
+      ],
+      "LinkingTo": [
+        "Rcpp",
+        "systemfonts"
+      ],
+      "VignetteBuilder": "knitr",
+      "Copyright": "See file COPYRIGHTS.",
+      "Encoding": "UTF-8",
+      "RoxygenNote": "7.3.2",
+      "SystemRequirements": "libpng",
+      "Collate": "'RcppExports.R' 'ipar.R' 'utils_ggplot2_performance.R' 'utils_ggplot2.R' 'utils.R' 'annotate_interactive.R' 'annotation_raster_interactive.R' 'utils_css.R' 'fonts.R' 'girafe_options.R' 'default.R' 'dsvg.R' 'dsvg_view.R' 'element_interactive.R' 'facet_interactive.R' 'geom_abline_interactive.R' 'geom_path_interactive.R' 'geom_polygon_interactive.R' 'geom_rect_interactive.R' 'geom_bar_interactive.R' 'geom_bin_2d_interactive.R' 'geom_boxplot_interactive.R' 'geom_col_interactive.R' 'geom_contour_interactive.R' 'geom_count_interactive.R' 'geom_crossbar_interactive.R' 'geom_curve_interactive.R' 'geom_density_2d_interactive.R' 'geom_density_interactive.R' 'geom_dotplot_interactive.R' 'geom_errorbar_interactive.R' 'geom_errorbarh_interactive.R' 'geom_freqpoly_interactive.R' 'geom_hex_interactive.R' 'geom_histogram_interactive.R' 'geom_hline_interactive.R' 'geom_jitter_interactive.R' 'geom_label_interactive.R' 'geom_linerange_interactive.R' 'geom_map_interactive.R' 'geom_point_interactive.R' 'geom_pointrange_interactive.R' 'geom_quantile_interactive.R' 'geom_raster_interactive.R' 'geom_ribbon_interactive.R' 'geom_segment_interactive.R' 'geom_sf_interactive.R' 'geom_smooth_interactive.R' 'geom_spoke_interactive.R' 'geom_text_interactive.R' 'geom_text_repel_interactive.R' 'geom_tile_interactive.R' 'geom_violin_interactive.R' 'geom_vline_interactive.R' 'ggiraph.R' 'girafe.R' 'grob_interactive.R' 'guide_bins_interactive.R' 'guide_colourbar_interactive.R' 'guide_coloursteps_interactive.R' 'guide_interactive.R' 'guide_legend_interactive.R' 'interactive_circle_grob.R' 'interactive_curve_grob.R' 'interactive_path_grob.R' 'interactive_points_grob.R' 'interactive_polygon_grob.R' 'interactive_polyline_grob.R' 'interactive_raster_grob.R' 'interactive_rect_grob.R' 'interactive_roundrect_grob.R' 'interactive_segments_grob.R' 'interactive_text_grob.R' 'labeller_interactive.R' 'layer_interactive.R' 'scale_alpha_interactive.R' 'scale_brewer_interactive.R' 'scale_colour_interactive.R' 'scale_gradient_interactive.R' 'scale_interactive.R' 'scale_linetype_interactive.R' 'scale_manual_interactive.R' 'scale_shape_interactive.R' 'scale_size_interactive.R' 'scale_steps_interactive.R' 'scale_viridis_interactive.R' 'tracers.R'",
+      "NeedsCompilation": "yes",
+      "Author": "David Gohel [aut, cre], Panagiotis Skintzos [aut], Mike Bostock [cph] (d3.js), Speros Kokenes [cph] (d3-lasso), Eric Shull [cph] (saveSvgAsPng js library), Lee Thomason [cph] (TinyXML2), Vladimir Agafonkin [cph] (Flatbush), Eric Book [ctb] (hline and vline geoms)",
+      "Maintainer": "David Gohel <david.gohel@ardata.fr>",
       "Repository": "CRAN"
     },
     "ggplot2": {
@@ -2791,6 +2992,33 @@
       "Maintainer": "Winston Chang <winston@rstudio.com>",
       "Repository": "CRAN"
     },
+    "metRology": {
+      "Package": "metRology",
+      "Version": "0.9-29-2",
+      "Source": "Repository",
+      "Date": "2025-01-20",
+      "Title": "Support for Metrological Applications",
+      "Authors@R": "c(person(given = c(\"Stephen\", \"L\", \"R\"), family = \"Ellison.\", role = \"aut\", email = \"s.ellison@lgcgroup.com\"), person(given = c(\"Stephen\", \"L\", \"R\"), family = \"Ellison\", role = \"cre\", email = \"s.ellison@lgcgroup.com\"))",
+      "Depends": [
+        "R (>= 2.14.0)",
+        "base",
+        "stats"
+      ],
+      "Imports": [
+        "graphics",
+        "MASS",
+        "numDeriv",
+        "robustbase"
+      ],
+      "Description": "Provides classes and calculation and plotting functions  for metrology applications, including measurement uncertainty estimation and inter-laboratory metrology comparison studies.",
+      "License": "GPL (>= 2)",
+      "URL": "https://r-forge.r-project.org/projects/metrology/",
+      "NeedsCompilation": "no",
+      "Author": "Stephen L R Ellison. [aut], Stephen L R Ellison [cre]",
+      "Maintainer": "Stephen L R Ellison <s.ellison@lgcgroup.com>",
+      "Repository": "CRAN",
+      "Encoding": "UTF-8"
+    },
     "mgcv": {
       "Package": "mgcv",
       "Version": "1.9-1",
@@ -2942,6 +3170,26 @@
       "Maintainer": "R Core Team <R-core@R-project.org>",
       "Repository": "CRAN"
     },
+    "numDeriv": {
+      "Package": "numDeriv",
+      "Version": "2016.8-1.1",
+      "Source": "Repository",
+      "Title": "Accurate Numerical Derivatives",
+      "Description": "Methods for calculating (usually) accurate numerical first and second order derivatives. Accurate calculations  are done using 'Richardson''s' extrapolation or, when applicable, a complex step derivative is available. A simple difference  method is also provided. Simple difference is (usually) less accurate but is much quicker than 'Richardson''s' extrapolation and provides a  useful cross-check.  Methods are provided for real scalar and vector valued functions.",
+      "Depends": [
+        "R (>= 2.11.1)"
+      ],
+      "LazyLoad": "yes",
+      "ByteCompile": "yes",
+      "License": "GPL-2",
+      "Copyright": "2006-2011, Bank of Canada. 2012-2016, Paul Gilbert",
+      "Author": "Paul Gilbert and Ravi Varadhan",
+      "Maintainer": "Paul Gilbert <pgilbert.ttv9z@ncf.ca>",
+      "URL": "http://optimizer.r-forge.r-project.org/",
+      "NeedsCompilation": "no",
+      "Repository": "CRAN",
+      "Encoding": "UTF-8"
+    },
     "openssl": {
       "Package": "openssl",
       "Version": "2.3.2",
@@ -3016,6 +3264,50 @@
       "LazyData": "true",
       "RoxygenNote": "7.3.0",
       "NeedsCompilation": "no",
+      "Repository": "CRAN"
+    },
+    "patchwork": {
+      "Package": "patchwork",
+      "Version": "1.3.0",
+      "Source": "Repository",
+      "Type": "Package",
+      "Title": "The Composer of Plots",
+      "Authors@R": "person(given = \"Thomas Lin\", family = \"Pedersen\", role = c(\"cre\", \"aut\"), email = \"thomasp85@gmail.com\", comment = c(ORCID = \"0000-0002-5147-4711\"))",
+      "Maintainer": "Thomas Lin Pedersen <thomasp85@gmail.com>",
+      "Description": "The 'ggplot2' package provides a strong API for sequentially  building up a plot, but does not concern itself with composition of multiple plots. 'patchwork' is a package that expands the API to allow for  arbitrarily complex composition of plots by, among others, providing  mathematical operators for combining multiple plots. Other packages that try  to address this need (but with a different approach) are 'gridExtra' and  'cowplot'.",
+      "License": "MIT + file LICENSE",
+      "Encoding": "UTF-8",
+      "Imports": [
+        "ggplot2 (>= 3.0.0)",
+        "gtable",
+        "grid",
+        "stats",
+        "grDevices",
+        "utils",
+        "graphics",
+        "rlang (>= 1.0.0)",
+        "cli",
+        "farver"
+      ],
+      "RoxygenNote": "7.3.2",
+      "URL": "https://patchwork.data-imaginist.com, https://github.com/thomasp85/patchwork",
+      "BugReports": "https://github.com/thomasp85/patchwork/issues",
+      "Suggests": [
+        "knitr",
+        "rmarkdown",
+        "gridGraphics",
+        "gridExtra",
+        "ragg",
+        "testthat (>= 2.1.0)",
+        "vdiffr",
+        "covr",
+        "png",
+        "gt (>= 0.11.0)"
+      ],
+      "VignetteBuilder": "knitr",
+      "Config/Needs/website": "gifski",
+      "NeedsCompilation": "no",
+      "Author": "Thomas Lin Pedersen [cre, aut] (<https://orcid.org/0000-0002-5147-4711>)",
       "Repository": "CRAN"
     },
     "pillar": {
@@ -3923,6 +4215,65 @@
       "Maintainer": "Yihui Xie <xie@yihui.name>",
       "Repository": "CRAN"
     },
+    "robustbase": {
+      "Package": "robustbase",
+      "Version": "0.99-4-1",
+      "Source": "Repository",
+      "VersionNote": "Released 0.99-4 on 2024-08-19, 0.99-3 on 2024-07-01 and 0.99-2 on 2024-01-27 to CRAN",
+      "Date": "2024-09-24",
+      "Title": "Basic Robust Statistics",
+      "Authors@R": "c(person(\"Martin\",\"Maechler\", role=c(\"aut\",\"cre\"), email=\"maechler@stat.math.ethz.ch\", comment = c(ORCID = \"0000-0002-8685-9910\")) , person(\"Peter\", \"Rousseeuw\", role=\"ctb\", comment = \"Qn and Sn\") , person(\"Christophe\", \"Croux\", role=\"ctb\", comment = \"Qn and Sn\") , person(\"Valentin\", \"Todorov\", role = \"aut\", email = \"valentin.todorov@chello.at\", comment = \"most robust Cov\") , person(\"Andreas\", \"Ruckstuhl\", role = \"aut\", email = \"andreas.ruckstuhl@zhaw.ch\", comment = \"nlrob, anova, glmrob\") , person(\"Matias\", \"Salibian-Barrera\", role = \"aut\", email = \"matias@stat.ubc.ca\", comment = \"lmrob orig.\") , person(\"Tobias\", \"Verbeke\", role = c(\"ctb\",\"fnd\"), email = \"tobias.verbeke@openanalytics.eu\", comment = \"mc, adjbox\") , person(\"Manuel\", \"Koller\", role = \"aut\", email = \"koller.manuel@gmail.com\", comment = \"mc, lmrob, psi-func.\") , person(c(\"Eduardo\", \"L. T.\"), \"Conceicao\", role = \"aut\", email = \"mail@eduardoconceicao.org\", comment = \"MM-, tau-, CM-, and MTL- nlrob\") , person(\"Maria\", \"Anna di Palma\", role = \"ctb\", comment = \"initial version of Comedian\") )",
+      "URL": "https://robustbase.R-forge.R-project.org/, https://R-forge.R-project.org/R/?group_id=59, https://R-forge.R-project.org/scm/viewvc.php/pkg/robustbase/?root=robustbase, svn://svn.r-forge.r-project.org/svnroot/robustbase/pkg/robustbase",
+      "BugReports": "https://R-forge.R-project.org/tracker/?atid=302&group_id=59",
+      "Description": "\"Essential\" Robust Statistics. Tools allowing to analyze data with robust methods.  This includes regression methodology including model selections and multivariate statistics where we strive to cover the book \"Robust Statistics, Theory and Methods\" by 'Maronna, Martin and Yohai'; Wiley 2006.",
+      "Depends": [
+        "R (>= 3.5.0)"
+      ],
+      "Imports": [
+        "stats",
+        "graphics",
+        "utils",
+        "methods",
+        "DEoptimR"
+      ],
+      "Suggests": [
+        "grid",
+        "MASS",
+        "lattice",
+        "boot",
+        "cluster",
+        "Matrix",
+        "robust",
+        "fit.models",
+        "MPV",
+        "xtable",
+        "ggplot2",
+        "GGally",
+        "RColorBrewer",
+        "reshape2",
+        "sfsmisc",
+        "catdata",
+        "doParallel",
+        "foreach",
+        "skewt"
+      ],
+      "SuggestsNote": "mostly only because of vignette graphics and simulation",
+      "Enhances": [
+        "robustX",
+        "rrcov",
+        "matrixStats",
+        "quantreg",
+        "Hmisc"
+      ],
+      "EnhancesNote": "linked to in man/*.Rd",
+      "LazyData": "yes",
+      "NeedsCompilation": "yes",
+      "License": "GPL (>= 2)",
+      "Author": "Martin Maechler [aut, cre] (<https://orcid.org/0000-0002-8685-9910>), Peter Rousseeuw [ctb] (Qn and Sn), Christophe Croux [ctb] (Qn and Sn), Valentin Todorov [aut] (most robust Cov), Andreas Ruckstuhl [aut] (nlrob, anova, glmrob), Matias Salibian-Barrera [aut] (lmrob orig.), Tobias Verbeke [ctb, fnd] (mc, adjbox), Manuel Koller [aut] (mc, lmrob, psi-func.), Eduardo L. T. Conceicao [aut] (MM-, tau-, CM-, and MTL- nlrob), Maria Anna di Palma [ctb] (initial version of Comedian)",
+      "Maintainer": "Martin Maechler <maechler@stat.math.ethz.ch>",
+      "Repository": "CRAN",
+      "Encoding": "UTF-8"
+    },
     "rstudioapi": {
       "Package": "rstudioapi",
       "Version": "0.17.1",
@@ -4214,6 +4565,36 @@
       "NeedsCompilation": "no",
       "Author": "Hadley Wickham [aut, cre, cph], Posit Software, PBC [cph, fnd]",
       "Maintainer": "Hadley Wickham <hadley@posit.co>",
+      "Repository": "CRAN"
+    },
+    "survival": {
+      "Package": "survival",
+      "Version": "3.8-3",
+      "Source": "Repository",
+      "Title": "Survival Analysis",
+      "Priority": "recommended",
+      "Date": "2024-12-17",
+      "Depends": [
+        "R (>= 3.5.0)"
+      ],
+      "Imports": [
+        "graphics",
+        "Matrix",
+        "methods",
+        "splines",
+        "stats",
+        "utils"
+      ],
+      "LazyData": "Yes",
+      "LazyDataCompression": "xz",
+      "ByteCompile": "Yes",
+      "Authors@R": "c(person(c(\"Terry\", \"M\"), \"Therneau\", email=\"therneau.terry@mayo.edu\", role=c(\"aut\", \"cre\")), person(\"Thomas\", \"Lumley\", role=c(\"ctb\", \"trl\"), comment=\"original S->R port and R maintainer until 2009\"), person(\"Atkinson\", \"Elizabeth\", role=\"ctb\"), person(\"Crowson\", \"Cynthia\", role=\"ctb\"))",
+      "Description": "Contains the core survival analysis routines, including definition of Surv objects,  Kaplan-Meier and Aalen-Johansen (multi-state) curves, Cox models, and parametric accelerated failure time models.",
+      "License": "LGPL (>= 2)",
+      "URL": "https://github.com/therneau/survival",
+      "NeedsCompilation": "yes",
+      "Author": "Terry M Therneau [aut, cre], Thomas Lumley [ctb, trl] (original S->R port and R maintainer until 2009), Atkinson Elizabeth [ctb], Crowson Cynthia [ctb]",
+      "Maintainer": "Terry M Therneau <therneau.terry@mayo.edu>",
       "Repository": "CRAN"
     },
     "sys": {
