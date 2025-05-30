@@ -14,7 +14,7 @@ website:
         menu:
           - href: crypto_calibration.qmd
             text: Cryptocurrency Risk Calibration
-      - text: CMI_2022 Projection Model 
+      - text: CMI Projection Model 
         menu:
           - href: https://paulbeardactuarial.shinyapps.io/cmi_dashboard
             text: Full Demo (Log-in required)
