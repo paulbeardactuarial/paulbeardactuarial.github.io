@@ -8,7 +8,7 @@ execute:
   warning: false
 ---
 
-![](crypto_calibration/images/ChatGPT Image May 30, 2025, 02_36_32 PM.png){width="1000" height="400"}
+![](crypto_calibration/images/ChatGPT%20Image%20May%2030,%202025,%2002_36_32%20PM.png){width="1000" height="400"}
 
 Cryptocurrency first manifested into existence in 2008, when the first ever Bitcoin was mined. It has since grown, with thousands of variants now available to purchase by the armchair investor. Some financial institutions have also gotten in on the game, although the level of trading pales compared to other major asset classes.
 
@@ -168,8 +168,8 @@ We present the empirical data for our 4 chosen cryptocurrencies in the plots bel
 #| label: annual change plot
 #| echo: false
 
-market_data |> 
-  dplyr::filter(!is.na(log_returns)) |> 
+market_data |>
+  dplyr::filter(!is.na(log_returns)) |>
   plot_empirical_returns(crypto_colours)
 
 ```
@@ -577,4 +577,6 @@ The code used to generate the results in this article can be found at: <https://
 
 <br>
 
+::: {.sign-off}
 This article was written by Paul Beard and published on 30th May 2025
+:::
