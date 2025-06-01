@@ -479,11 +479,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 I write actuarial-based articles on my LinkedIn profile. I am currently in the process of migrating these to my website. Some highlights include:
 
--   [Artificial Actuary (Classifying Causes of Death)](https://paulbeardactuarial.github.io/artificial_actuary_cod.html): An article that leverages the use of LLMs via an API connection to cleanse / categorise cause of death data.
+-   [Artificial Actuary: Classifying Causes of Death](https://paulbeardactuarial.github.io/artificial_actuary_cod.html) An article that leverages the use of LLMs via an API connection to cleanse / categorise cause of death data.
 
--   [Coronation Street: The Most Dangerous Street in the UK?](https://www.linkedin.com/pulse/coronation-street-most-dangerous-uk-paul-beard/?trackingId=cJtp6%2BzBRiu9duF57XLXgw%3D%3D): An article that tries to make sense of the mortality rates experienced on the TV show 'Coronation Street'.
+-   [Coronation Street: The Most Dangerous Street in the UK?](https://www.linkedin.com/pulse/coronation-street-most-dangerous-uk-paul-beard/?trackingId=cJtp6%2BzBRiu9duF57XLXgw%3D%3D) An article that tries to make sense of the mortality rates experienced on the TV show 'Coronation Street'.
 
--   [Cryptocurrency: An Internal Model Risk Calibration](https://www.linkedin.com/pulse/cryptocurrency-risk-internal-model-calibration-paul-beard/?trackingId=cJtp6%2BzBRiu9duF57XLXgw%3D%3D): An article that demonstrates what an Internal Model calibration might look like for a hypothetical insurer exposed to cryptocurrency risk.
+-   [Cryptocurrency: An Internal Model Risk Calibration](https://paulbeardactuarial.github.io/crypto_calibration.html) An article that demonstrates what an Internal Model Risk calibration might look like for a hypothetical insurer invested in non-trivial amounts of cryptocurrency assets.
 
 I have created a version of the CMI 2022 Projection Model in R. This version solves the APCI model to produce the exact same mortality projections as the official Excel model. I am in the process of trying to release it to more actuaries (depending on the outcome of talks with the CMI committee).
 
