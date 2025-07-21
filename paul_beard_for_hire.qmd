@@ -362,7 +362,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 #### Overview
 
--   I am working for an A.I. Tech Start-up, Keenu.io, which aims to create a simulated version of the IELTS (International English Language Testing System) speaking exam.
+-   [Keenu.io](https://keenu.io/) is an A.I. Tech Start-up, which aims to create a simulated version of the IELTS (International English Language Testing System) speaking exam. I have been collaborating with the small team of founders to develop A.I. solutions.
 
 ::: {.content-section data-tags="Data Scientist"}
 #### Data Scientist and A.I. Engineer [(Jun 2025 — Present)]{style="font-style: italic; font-size: 0.65em;"}
@@ -390,7 +390,7 @@ document.addEventListener('DOMContentLoaded', function() {
 #### R Developer for Reinsurance Annuity Pricing Model Migration [(Feb 2024 — Mar 2025)]{style="font-style: italic; font-size: 0.65em;"}
 :::
 
-::: {.content-section data-tags="Annuity Pricing,R Developer"}
+::: {.content-section data-tags="Annuity Pricing,R Developer,Data Scientist"}
 -   The initial project was completed for UK reinsurance pricing of BPA schemes. The project migrated the convoluted pricing process into a slick single R workflow. We revolutionised the pricing process at SCOR. I was the lead developer of an R package and Quarto book that together could perform all pricing calculations required, and produce html reports.
 :::
 
@@ -404,7 +404,7 @@ document.addEventListener('DOMContentLoaded', function() {
     -   Risk Based Cashflow (i.e. Stressed Capital Requirement) models
 :::
 
-::: {.content-section data-tags="R Developer"}
+::: {.content-section data-tags="R Developer,Data Scientist"}
 -   As well as being able to develop complex actuarial models, the project entailed the following:
     -   Developing functions that are flexible, fast and documented via Roxygen
     -   Devloping a complete package of functions, data and tests that was rolled out to other actuaries
