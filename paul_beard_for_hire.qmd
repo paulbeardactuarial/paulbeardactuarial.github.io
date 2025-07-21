@@ -63,7 +63,7 @@ cvdata <- read_all_excel_sheets(data_filepath)
 
 -   I am an experienced coder. I have built complex models, complete packages and everything on this website. I have mastery over Excel and R, but am also adept across other platforms (see Software Experience). I understand good data and programming practices.
 
--   I have a fantastic track record of performance, both academically and in a work environment.
+-   I have a fantastic track record of performance, both academically and in a work environment. 
 
 ::: major-section-break
 :::
@@ -226,13 +226,13 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Define custom tag order
   const tagOrder = [
-    'R Developer',
-    'Data Scientist',
     'Annuity Pricing',
     'Commercial Real Estate Loan Rating',
+    'Data Scientist',
     'Internal Model',
-    'With Profits Management',
-    'Mentor'
+    'Mentor',
+    'R Developer',
+    'With Profits Management'
   ];
 
   // Collect unique tags
@@ -362,7 +362,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 #### Overview
 
--   [Keenu.io](https://keenu.io/) is an A.I. Tech Start-up, which aims to create a simulated version of the IELTS (International English Language Testing System) speaking exam. I have been collaborating with the small team of founders to develop A.I. solutions.
+-   [Keenu.io](https://keenu.io/) is an A.I. Tech Start-up, which aims to create a simulated version of the IELTS (International English Language Testing System) speaking exam. I collaborated with the small team of founders to develop A.I. solutions.
 
 ::: {.content-section data-tags="Data Scientist"}
 #### Data Scientist and A.I. Engineer [(Jun 2025 — Present)]{style="font-style: italic; font-size: 0.65em;"}
@@ -370,9 +370,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 ::: {.content-section data-tags="Data Scientist"}
 -   One of the big challenges is getting an accurate score for the various facets of the speaking exam, based on the speech submitted by a student. To do this I have worked in Python, doing the following:
-    -   Interacted with the APIs (Application Programming Interface) or SDKs (Software Development Kit) of various LLMs (Large Language Model) on the market
+    -   Interacted with the APIs (Application Programming Interface) or SDKs (Software Development Kit) of various LLMs (Large Language Model) available.
     -   Used extensive testing to rank LLM performance for each facet and determine company strategy.
     -   Performed fine-tuning of A.I. generated scores to increase their accuracy when compared to human scores.
+    
 -   The start-up only has four people working on it. The pace of change is fast, and strategy can change on a dime. As well as making sure models are as accurate as possible, I factored business needs into the decision making, such as cost, speed and materiality.
 :::
 
@@ -407,7 +408,7 @@ document.addEventListener('DOMContentLoaded', function() {
 ::: {.content-section data-tags="R Developer,Data Scientist"}
 -   As well as being able to develop complex actuarial models, the project entailed the following:
     -   Developing functions that are flexible, fast and documented via Roxygen
-    -   Devloping a complete package of functions, data and tests that was rolled out to other actuaries
+    -   Developing a complete package of functions, data and tests that was rolled out to other actuaries
     -   Working with Git, Azure and Quarto
     -   Development of code to interact directly with an API of Club Vita to download mortality curves
     -   Consideration of usability, to develop a template that other actuaries, with less experience in R, could employ
@@ -518,7 +519,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 # **Other Projects**
 
-I write actuarial-based articles on my LinkedIn profile. I am currently in the process of migrating these to my website. Some highlights include:
+I write articles applying actuarial techniques and exploring topics in the industry. Some highlights include:
 
 -   [Artificial Actuary: Classifying Causes of Death](https://paulbeardactuarial.github.io/artificial_actuary_cod.html) An article that leverages the use of LLMs via an API connection to cleanse / categorise cause of death data.
 
@@ -528,4 +529,4 @@ I write actuarial-based articles on my LinkedIn profile. I am currently in the p
 
 I have created a version of the CMI 2022 Projection Model in R. This version solves the APCI model to produce the exact same mortality projections as the official Excel model. I am in the process of trying to release it to more actuaries (depending on the outcome of talks with the CMI committee).
 
-There is currently an interactive dashboard connected to this model which can be explored [here](https://paulbeardactuarial.shinyapps.io/cmi_dashboard/). A password is required for access, however it can be disclosed upon request.
+There is currently an interactive dashboard connected to this model which can be explored [here](https://paulbeardactuarial.shinyapps.io/cmi_dashboard/). A password is required for access, however it can be disclosed upon request (get in touch on LinkedIn)
