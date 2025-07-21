@@ -1,6 +1,6 @@
 ---
 title: "Paul Beard FIA"
-subtitle: "Life Actuary and R Developer"
+subtitle: "Life Actuary and Data Scientist"
 format: 
   html:
     fig-pos: "H"
@@ -61,7 +61,7 @@ cvdata <- read_all_excel_sheets(data_filepath)
 
 -   I am a technically strong Fellow of the Institute of Actuaries working in the life insurance industry for `r {floor(interval(ISOdate(2012,9,3), now()) / years(1))}` years, with `r {floor(interval(ISOdate(2017,4,1), now()) / years(1))}` years post qualification.
 
--   I am an experienced coder. I have built complex models, complete packages and everything on this website! I have mastery over Excel and R, but am also adept across other platforms (see Software Experience). I understand good data and programming practices.
+-   I am an experienced coder. I have built complex models, complete packages and everything on this website. I have mastery over Excel and R, but am also adept across other platforms (see Software Experience). I understand good data and programming practices.
 
 -   I have a fantastic track record of performance, both academically and in a work environment.
 
@@ -79,9 +79,7 @@ qual.hist <-
     ~Qualification,  ~`Awarded By`, ~Grade,  ~`Subject(s)`,      ~Date,
     "Fellowship",    "IFoA", NA,    "SA2, ST2, ST6",    "2017-12-01",
         "Masters", "Univ. of Cambridge", "2.i", "Natural Sciences (Chemistry)", "2011-07-01",
-    "Bachelors","Univ. of Cambridge", "1", "Natural Sciences (Chemistry)", "2011-07-01",
-    "A Level",       NA, "A (x5)", "Maths, Further Maths, ...", "2007-08-01",
-    "GCSE",          NA, "A* (x8); A (x3)", "Maths, English, ...", "2005-08-01"
+    "Bachelors","Univ. of Cambridge", "1", "Natural Sciences (Chemistry)", "2011-07-01"
   ) %>% 
   mutate(Date = as.Date(Date) %>% format('%b-%Y'))
 
@@ -229,6 +227,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Define custom tag order
   const tagOrder = [
     'R Developer',
+    'Data Scientist',
     'Annuity Pricing',
     'Commercial Real Estate Loan Rating',
     'Internal Model',
@@ -337,18 +336,58 @@ document.addEventListener('DOMContentLoaded', function() {
 
 ------------------------------------------------------------------------
 
-### SCOR [(Employed as Contractor, Feb 2024 — Feb 2025)]{style="font-style: italic; font-size: 0.65em;"}
+::: {.content-section data-tags="Mentor, Data Scientist"}
+### **Institute and Faculty of Actuaries** [(Volunteer, Various Dates)]{style="font-style: italic; font-size: 0.65em;"}
+:::
+
+::: {.content-section data-tags="Data Scientist"}
+#### Data Science Working Party Member [(Jul 2025 — Present)]{style="font-style: italic; font-size: 0.65em;"}
+
+-   Currently a member of the IFoA Data Science Working Party.
+
+#### Life - Artificial Intelligence and Automation Working Party Member [(Jul 2025 — Present)]{style="font-style: italic; font-size: 0.65em;"}
+
+-   Currently a member of the IFoA Life Artificial Intelligence and Automation Working Party
+:::
+
+::: {.content-section data-tags="Mentor"}
+#### Student Employer Contact [(Oct 2018 — Oct 2021)]{style="font-style: italic; font-size: 0.65em;"}
+
+-   Volunteered as a Student Employer Contact. This role involved engaging with the IFoA to facilitate exam result distribution, as well as helping shape IFoA policy around exams.
+
+-   I advised many students during this time. I made sure to always be approachable to the students, and keep open paths of dialogue.
+:::
+
+### **Keenu** [(Start-up Colaborator, Jun 2025 — Present)]{style="font-style: italic; font-size: 0.65em;"}
 
 #### Overview
 
--   In my time at SCOR I was the lead R developer in a project to migrate the entire annuity pricing model suite from Excel / SAS / Word into to a single R workflow.
+-   I am working for an A.I. Tech Start-up, Keenu.io, which aims to create a simulated version of the IELTS (International English Language Testing System) speaking exam.
+
+::: {.content-section data-tags="Data Scientist"}
+#### Data Scientist and A.I. Engineer [(Jun 2025 — Present)]{style="font-style: italic; font-size: 0.65em;"}
+:::
+
+::: {.content-section data-tags="Data Scientist"}
+-   One of the big challenges is getting an accurate score for the various facets of the speaking exam, based on the speech submitted by a student. To do this I have worked in Python, doing the following:
+    -   Interacted with the APIs (Application Programming Interface) or SDKs (Software Development Kit) of various LLMs (Large Language Model) on the market
+    -   Used extensive testing to rank LLM performance for each facet and determine company strategy.
+    -   Performed fine-tuning of A.I. generated scores to increase their accuracy when compared to human scores.
+-   The start-up only has four people working on it. The pace of change is fast, and strategy can change on a dime. As well as making sure models are as accurate as possible, I factored business needs into the decision making, such as cost, speed and materiality.
+:::
+
+### **SCOR** [(Employed as Contractor, Feb 2024 — Mar 2025)]{style="font-style: italic; font-size: 0.65em;"}
+
+#### Overview
+
+-   In my time at SCOR I was the lead R developer in a project to migrate the entire annuity pricing model suite from Excel / SAS / Word into to a single R workflow. This was a transformative project that streamlined longevity pricing at SCOR.
 
 -   SCOR were impressed with my work and offered an extension after 6 months.
 
--   When the project was completed after 12 months, management stated it was the first ever IT-based project they had known at SCOR to finish on-time and on-budget.
+-   Management stated it was the first ever IT-based project they had known to finish on-time and on-budget.
 
-::: {.content-section data-tags="Annuity Pricing, R Developer"}
-#### R Developer for Reinsurance Annuity Pricing Model Migration [(Feb 2024 — Feb 2025)]{style="font-style: italic; font-size: 0.65em;"}
+::: {.content-section data-tags="Annuity Pricing, R Developer,Data Scientist"}
+#### R Developer for Reinsurance Annuity Pricing Model Migration [(Feb 2024 — Mar 2025)]{style="font-style: italic; font-size: 0.65em;"}
 :::
 
 ::: {.content-section data-tags="Annuity Pricing,R Developer"}
@@ -386,11 +425,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 -   Phoenix were impressed with my work and offered an extension after 6 months.
 
-::: {.content-section data-tags="Longevity, R Developer"}
+::: {.content-section data-tags="Longevity, R Developer, Data Scientist"}
 #### Assumptions Architect for BPAs [(April 2023 — Feb 2024)]{style="font-style: italic; font-size: 0.65em;"}
 :::
 
-::: {.content-section data-tags="R Developer"}
+::: {.content-section data-tags="R Developer, Data Scientist"}
 -   Whilst at Phoenix I noted that there was considerable manual burden on checking spreadsheet changes. I therefore took the initiative to create a sophisticated comparison tool in R which could compare two complex assumptions spreadsheets.
 
 -   By being able to replicate the tenets of how MG-Alfa reads table structures within R, the tool could produce an intelligent breakdown of assumption table changes which was superior to alternatives being used at the time (e.g. VBA cell-by-cell comparison, BeyondCompare). The tool was packaged and rolled out to other actuaries.
@@ -425,7 +464,9 @@ document.addEventListener('DOMContentLoaded', function() {
 ::: {.content-section data-tags="Mentor"}
 #### Actuarial Student Overseer [(Jun 2018 — Nov 2021)]{style="font-style: italic; font-size: 0.65em;"}
 
--   Volunteered as coordinator and adviser to over 60 students sitting exams at Royal London. This role has required strong communication and leadership skills. I made sure to always be approachable to the students, and keep open paths of dialogue. This role was also an official volunteer position (Student Employer Contact) with the IFoA.
+-   Volunteered as coordinator and adviser to over 60 students sitting exams at Royal London. This role has required strong communication and leadership skills. I made sure to always be approachable to the students, and keep open paths of dialogue.
+
+-   Within this role I collaborated with HR to construct company policy relating to students. I also dealt with many sensitive issues and delicate matters with complete discretion and professionalism.
 :::
 
 ::: {.content-section data-tags="Internal Model"}
